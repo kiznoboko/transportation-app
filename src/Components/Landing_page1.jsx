@@ -10,6 +10,7 @@ import profile from "./images/profile.png";
 import rideshare from "./images/rideshare.png";
 import schedule from "./images/schedule.png";
 import maplocation from "./images/map-location.png";
+import PayasyouGo from "./PayAsyougo.jsx";
 
 const Landing_page1 = () => {
     const navigate = useNavigate()
@@ -46,6 +47,10 @@ const Landing_page1 = () => {
  const handleGetStartedClick = () => {
     navigate("/user_interface", { state: { registerActive: true } });
   };
+
+  const handlePayasyouGo = () => {
+    navigate("/Payasyougo")
+  }
 
     
     return (
@@ -413,7 +418,7 @@ const Landing_page1 = () => {
                                                 </li>
                                             </ul>
                                         </span>
-                                        <button className="LPMS-section3_box2_items_part1_selectionBtn">Select Normal Ride</button>
+                                        <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={handlePayasyouGo}>Select Normal Ride</button>
                                 </div>
 
                                     {/* part1 */}
@@ -452,7 +457,7 @@ const Landing_page1 = () => {
                                                 </li>
                                             </ul>
                                         </span>
-                                        <button className="LPMS-section3_box2_items_part1_selectionBtn">Select VIP Ride</button>
+                                        <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={handlePayasyouGo}>Select VIP Ride</button>
                                 </div>
 
                                 {/* part3 */}       
@@ -487,7 +492,7 @@ const Landing_page1 = () => {
                                                
                                             </ul>
                                         </span>
-                                        <button className="LPMS-section3_box2_items_part1_selectionBtn">Select Co-joint (Shared)</button>
+                                        <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={handlePayasyouGo}>Select Co-joint (Shared)</button>
                                 </div>
 
                         </div>
