@@ -1,11 +1,11 @@
-:root {
+/* :root {
   --primary: #ff5722;
   --accent: #2e8b57;
   --text: #333;
   --light-bg: #f8f9fa;
 }
 
-/* ===== Page Wrapper ===== */
+
 .transportation-page {
   width: 100%;
   background: var(--light-bg);
@@ -14,7 +14,7 @@
   padding: 2rem 6%;
 }
 
-/* ===== Header Placeholder ===== */
+
 .transportation-header .header-bar {
   width: 100%;
   height: 45px;
@@ -29,7 +29,6 @@
   
 }
 
-/* ===== Search Bar Section ===== */
 .transportation-search-bar {
   width: 100%;
   display: flex;
@@ -91,7 +90,7 @@
   background: var(--primary);
 }
 
-/* ===== Available Transportation ===== */
+
 .transportation-available {
   margin-top: 3rem;
 }
@@ -115,7 +114,7 @@
   margin: 1rem 0 2rem;
 }
 
-/* ===== Grid of Cards ===== */
+
 .transportation-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -144,7 +143,7 @@
   transform: scale(30px);
 }
 
-/* ===== Responsive ===== */
+
 @media (max-width: 768px) {
   .transportation-search-bar {
     flex-direction: column;
@@ -157,5 +156,181 @@
 
   .transportation-search-btn {
     align-self: center;
+  }
+} */
+
+
+
+/* === TRANSPORTATION PAGE === */
+.transportation-page {
+  font-family: 'Inter', 'Poppins', sans-serif;
+  background: #f8f9fa;
+  min-height: 100vh;
+  width: 100%;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === HEADER === */
+.transportation-header {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SearchResult-navLink {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s ease;
+}
+
+.SearchResult-navLink:hover {
+  opacity: 0.8;
+}
+
+/* === SEARCH SECTION === */
+.transportation-search-bar {
+  background: #fff;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px;
+}
+
+.transportation-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.transportation-input {
+  flex: 1 1 180px;
+  min-width: 150px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fdfdfd;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.transportation-input:focus {
+  outline: none;
+  border-color: #00b4d8;
+  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
+}
+
+.transportation-search-btn {
+  background: #0077b6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.2rem;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transportation-search-btn:hover {
+  background: #023e8a;
+}
+
+/* === AVAILABLE SECTION === */
+.transportation-available {
+  width: 90%;
+  max-width: 1000px;
+  margin: 1rem auto 3rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.transportation-section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #0077b6;
+}
+
+.transportation-arrow {
+  font-size: 1rem;
+}
+
+.transportation-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 1rem 0;
+}
+
+/* === RESULTS GRID === */
+.transportation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.transportation-card {
+  background: #f9fbfd;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.transportation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.transportation-card p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.reserve-ridebtn-from-searchResult1 {
+  margin-top: 0.8rem;
+  background: #00b4d8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.reserve-ridebtn-from-searchResult1:hover {
+  background: #0077b6;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .transportation-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .transportation-search-btn {
+    width: 100%;
   }
 }
