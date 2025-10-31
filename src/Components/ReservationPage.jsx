@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Styles/ReservationPage.css";
 import { FaArrowLeft, FaMapMarkerAlt, FaClock, FaUser, FaCreditCard } from "react-icons/fa";
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 
 export default function ReservationPage() {
     const navigate = useNavigate()
@@ -30,7 +30,7 @@ export default function ReservationPage() {
     <div className="reservation-page">
       <header className="reservation-header">
         <FaArrowLeft className="back-icon" />
-        <a href="/">home</a>
+       <Link to="/">home</Link>
       </header>
 
       <main className="reservation-container">
