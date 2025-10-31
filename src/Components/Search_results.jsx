@@ -186,105 +186,313 @@
 
 
 
+// import React, { useEffect, useState } from "react";
+// import { useLocation } from "react-router-dom";
+// import "../Styles/Search_results.css";
+// import { FaSearch, FaPlay } from "react-icons/fa";
+// import { createClient } from "@supabase/supabase-js";
+// import { useNavigate } from "react-router-dom";
+
+// // Supabase setup
+// const supabaseUrl = 'https://xdbhtxoheaqgrbruapxv.supabase.co';
+// const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkYmh0eG9oZWFxZ3JicnVhcHh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5NjQ1MjgsImV4cCI6MjA3NTU0MDUyOH0.kJIhesOoD7DYbR2ggSkxZO3w5VTECuLHGNztmwIs7PA';
+// const supabase = createClient(supabaseUrl, supabaseKey);
+
+// const Search_results = () => {
+//   const navigate = useNavigate()
+ 
+//   const { state } = useLocation();
+
+//   // Local form state initialized from route state or defaults
+//   const [formData, setFormData] = useState({
+//     departure: state?.departure || "",
+//     destination: state?.destination || "",
+//     date: state?.date || "",
+//     time: state?.time || "",
+//     rideType: state?.rideType || "",
+//    payment_method: state?.payment_method || "",
+//    passengers : state?.passengers || ""
+
+//   });
+
+//   const [results, setResults] = useState([]);
+
+//    const handlereserve = (ride) => {
+//   navigate("/Payment_page", { state: { ...formData, selectedRide: ride } });
+// };
+
+//   // Fetch function based on current formData
+// //   const fetchData = async () => {
+// //     const { departure, destination, date, time, rideType, payment_method} = formData;
+// //     const rideDateTime = date && time ? `${date}T${time}:00` : null;
+
+// //     let query = supabase
+// //       .from("orders_test")
+// //       .select("*")
+// //       .ilike("start_location", `%${departure}%`)
+// //       .ilike("end_location", `%${destination}%`);
+
+// //    if (date) query = query.gte("ride_date", date);
+// // if (time) query = query.gte("ride_time", time);
+// //     if (rideType) {
+// //       query = query.eq("ride_type", rideType);
+// //     }
+
+// //     if (payment_method) {
+// //   query = query.eq("payment_method", payment_method);
+// // }
+// //   if (passengers) query = query.eq("passengers", Number(passengers));
+
+// //     const { data, error } = await query;
+
+// //     if (!error) setResults(data);
+// //     else console.error(error);
+// //   };
+
+// const fetchData = async () => {
+//   const { departure, destination, date, time, rideType, payment_method, passengers } = formData;
+
+//   let query = supabase
+//     .from("orders_test")
+//     .select("*")
+//     .ilike("start_location", `%${departure}%`)
+//     .ilike("end_location", `%${destination}%`);
+
+//   if (date) query = query.gte("ride_date", date);
+
+//   if (time) {
+//     const timeValue = time.length === 5 ? `${time}:00` : time; // "HH:MM:SS"
+//     query = query.gte("ride_time", timeValue);
+//   }
+
+//   if (rideType) query = query.eq("ride_type", rideType);
+//   if (payment_method) query = query.eq("payment_method", payment_method);
+//   if (passengers) query = query.eq("passengers", Number(passengers));
+
+//   const { data, error } = await query;
+//   if (!error) setResults(data);
+//   else console.error(error);
+// };
+
+
+//   // Fetch on mount & whenever formData changes
+//   useEffect(() => {
+//     fetchData();
+//   }, [formData]);
+
+//   // Handle input changes
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData(prev => ({ ...prev, [name]: value }));
+//   };
+
+//   // Handle manual form submit (optional, since fetch triggers on change)
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     fetchData();
+//   };
+
+//   return (
+//     <div className="transportation-page">
+//       <header className="transportation-header">
+//         <div className="header-bar">
+//           <a className="SearchResult-navLink" href="#">home</a>
+//         </div>
+//       </header>
+
+//       <section className="transportation-search-bar">
+//         {/* Make this a form so user can submit */}
+//         <form onSubmit={handleSubmit} className="transportation-filters">
+//           <input
+//             type="text"
+//             name="departure"
+//             value={formData.departure}
+//             placeholder="Pick-up location"
+//             className="transportation-input"
+//             onChange={handleChange}
+//           />
+//           <input
+//             type="text"
+//             name="destination"
+//             value={formData.destination}
+//             placeholder="Destination"
+//             className="transportation-input"
+//             onChange={handleChange}
+//           />
+//           <input
+//             type="date"
+//             name="date"
+//             value={formData.date}
+//             className="transportation-input"
+//             onChange={handleChange}
+//           />
+//           <input
+//             type="time"
+//             name="time"
+//             value={formData.time}
+//             className="transportation-input"
+//             onChange={handleChange}
+//           />
+//           <select
+//             name="rideType"
+//             className="transportation-input"
+//             value={formData.rideType}
+//             onChange={handleChange}
+//           >
+//             <option value="">Select type</option>
+//             <option value="normal">normal</option>
+//             <option value="vip">vip</option>
+//             <option value="co-joint">co-joint</option>
+//           </select>
+
+//           <select
+//                     id="passengers"
+//                     name="passengers"
+//                     value={formData.passengers}
+//                     onChange={handleChange}
+//                     required
+//                   >
+//                     <option value="">Select passengers</option>
+//                     <option value="1">1 passenger</option>
+//                     <option value="2">2 passengers</option>
+//                     <option value="3">3 passengers</option>
+//                     <option value="4">4 passengers</option>
+//                     <option value="5">5 passengers</option>
+//                   </select>
+
+
+//           <select
+//   name="payment_method"
+//   value={formData.payment_method}
+//   onChange={handleChange}
+//   className="form-group-box2-item1-payment_methodSelect"
+// >
+//   <option value="" disabled>your payment type</option>
+//   <option value="cash">cash</option>
+//   <option value="paypal">paypal</option>
+//   <option value="card">card</option>
+// </select>
+
+
+//           <button type="submit" className="transportation-search-btn">
+//             <FaSearch />
+//           </button>
+//         </form>
+//       </section>
+
+//       <section className="transportation-available">
+//         <div className="transportation-section-title">
+//           <span>Available transportation</span>
+//           <FaPlay className="transportation-arrow" />
+//         </div>
+
+//         <hr className="transportation-divider" />
+
+//         <div className="transportation-grid">
+//           {results.length === 0 ? (
+//             <p>No matching rides found.</p>
+//           ) : (
+//             results.map((ride) => (
+//               <div key={ride.id} className="transportation-card">
+//                 <p>{ride.start_location} → {ride.end_location}</p>
+//                 <p>Time: {ride.ride_time}</p>
+//                 <p>Seats: {ride.passengers}</p>
+                
+//                 <button className="btn reserve-ridebtn-from-searchResult1" onClick={handlereserve}>reserve</button>
+//               </div>
+//             ))
+//           )}
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default Search_results;
+
+
+
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../Styles/Search_results.css";
 import { FaSearch, FaPlay } from "react-icons/fa";
 import { createClient } from "@supabase/supabase-js";
-import { useNavigate } from "react-router-dom";
 
-// Supabase setup
+// ✅ Supabase setup
 const supabaseUrl = 'https://xdbhtxoheaqgrbruapxv.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkYmh0eG9oZWFxZ3JicnVhcHh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5NjQ1MjgsImV4cCI6MjA3NTU0MDUyOH0.kJIhesOoD7DYbR2ggSkxZO3w5VTECuLHGNztmwIs7PA';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const Search_results = () => {
-  const navigate = useNavigate()
-  const handlereserve = () => {
-        navigate("/Payment_page")
-  }
+  const navigate = useNavigate();
   const { state } = useLocation();
 
-  // Local form state initialized from route state or defaults
+  // ✅ Initialize form data (from previous page or defaults)
   const [formData, setFormData] = useState({
     departure: state?.departure || "",
     destination: state?.destination || "",
     date: state?.date || "",
     time: state?.time || "",
     rideType: state?.rideType || "",
-   payment_method: state?.payment_method || "",
-   passengers : state?.passengers || ""
-
+    payment_method: state?.payment_method || "",
+    passengers: state?.passengers || "",
   });
 
   const [results, setResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // Fetch function based on current formData
-//   const fetchData = async () => {
-//     const { departure, destination, date, time, rideType, payment_method} = formData;
-//     const rideDateTime = date && time ? `${date}T${time}:00` : null;
+  // ✅ Correctly navigate to ReservationPage with selected ride
+  const handlereserve = (ride) => {
+    navigate("/Payment_page", { state: { ...formData, selectedRide: ride } });
+  };
 
-//     let query = supabase
-//       .from("orders_test")
-//       .select("*")
-//       .ilike("start_location", `%${departure}%`)
-//       .ilike("end_location", `%${destination}%`);
+  // ✅ Fetch rides from Supabase
+  const fetchData = async () => {
+    setLoading(true);
+    const {
+      departure,
+      destination,
+      date,
+      time,
+      rideType,
+      payment_method,
+      passengers,
+    } = formData;
 
-//    if (date) query = query.gte("ride_date", date);
-// if (time) query = query.gte("ride_time", time);
-//     if (rideType) {
-//       query = query.eq("ride_type", rideType);
-//     }
+    let query = supabase
+      .from("orders_test")
+      .select("*")
+      .ilike("start_location", `%${departure}%`)
+      .ilike("end_location", `%${destination}%`);
 
-//     if (payment_method) {
-//   query = query.eq("payment_method", payment_method);
-// }
-//   if (passengers) query = query.eq("passengers", Number(passengers));
+    if (date) query = query.gte("ride_date", date);
+    if (time) {
+      const timeValue = time.length === 5 ? `${time}:00` : time;
+      query = query.gte("ride_time", timeValue);
+    }
 
-//     const { data, error } = await query;
+    if (rideType) query = query.eq("ride_type", rideType);
+    if (payment_method) query = query.eq("payment_method", payment_method);
+    if (passengers) query = query.eq("passengers", Number(passengers));
 
-//     if (!error) setResults(data);
-//     else console.error(error);
-//   };
+    const { data, error } = await query;
+    if (!error) setResults(data);
+    else console.error("Supabase error:", error);
+    setLoading(false);
+  };
 
-const fetchData = async () => {
-  const { departure, destination, date, time, rideType, payment_method, passengers } = formData;
-
-  let query = supabase
-    .from("orders_test")
-    .select("*")
-    .ilike("start_location", `%${departure}%`)
-    .ilike("end_location", `%${destination}%`);
-
-  if (date) query = query.gte("ride_date", date);
-
-  if (time) {
-    const timeValue = time.length === 5 ? `${time}:00` : time; // "HH:MM:SS"
-    query = query.gte("ride_time", timeValue);
-  }
-
-  if (rideType) query = query.eq("ride_type", rideType);
-  if (payment_method) query = query.eq("payment_method", payment_method);
-  if (passengers) query = query.eq("passengers", Number(passengers));
-
-  const { data, error } = await query;
-  if (!error) setResults(data);
-  else console.error(error);
-};
-
-
-  // Fetch on mount & whenever formData changes
+  // ✅ Fetch on mount & whenever form data changes
   useEffect(() => {
     fetchData();
   }, [formData]);
 
-  // Handle input changes
+  // ✅ Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle manual form submit (optional, since fetch triggers on change)
+  // ✅ Manual search submit
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchData();
@@ -294,12 +502,13 @@ const fetchData = async () => {
     <div className="transportation-page">
       <header className="transportation-header">
         <div className="header-bar">
-          <a className="SearchResult-navLink" href="#">home</a>
+          <a className="SearchResult-navLink" href="/">
+            home
+          </a>
         </div>
       </header>
 
       <section className="transportation-search-bar">
-        {/* Make this a form so user can submit */}
         <form onSubmit={handleSubmit} className="transportation-filters">
           <input
             type="text"
@@ -331,6 +540,7 @@ const fetchData = async () => {
             className="transportation-input"
             onChange={handleChange}
           />
+
           <select
             name="rideType"
             className="transportation-input"
@@ -344,33 +554,33 @@ const fetchData = async () => {
           </select>
 
           <select
-                    id="passengers"
-                    name="passengers"
-                    value={formData.passengers}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="">Select passengers</option>
-                    <option value="1">1 passenger</option>
-                    <option value="2">2 passengers</option>
-                    <option value="3">3 passengers</option>
-                    <option value="4">4 passengers</option>
-                    <option value="5">5 passengers</option>
-                  </select>
-
+            id="passengers"
+            name="passengers"
+            value={formData.passengers}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select passengers</option>
+            <option value="1">1 passenger</option>
+            <option value="2">2 passengers</option>
+            <option value="3">3 passengers</option>
+            <option value="4">4 passengers</option>
+            <option value="5">5 passengers</option>
+          </select>
 
           <select
-  name="payment_method"
-  value={formData.payment_method}
-  onChange={handleChange}
-  className="form-group-box2-item1-payment_methodSelect"
->
-  <option value="" disabled>your payment type</option>
-  <option value="cash">cash</option>
-  <option value="paypal">paypal</option>
-  <option value="card">card</option>
-</select>
-
+            name="payment_method"
+            value={formData.payment_method}
+            onChange={handleChange}
+            className="form-group-box2-item1-payment_methodSelect"
+          >
+            <option value="" disabled>
+              your payment type
+            </option>
+            <option value="cash">cash</option>
+            <option value="paypal">paypal</option>
+            <option value="card">card</option>
+          </select>
 
           <button type="submit" className="transportation-search-btn">
             <FaSearch />
@@ -386,25 +596,35 @@ const fetchData = async () => {
 
         <hr className="transportation-divider" />
 
-        <div className="transportation-grid">
-          {results.length === 0 ? (
-            <p>No matching rides found.</p>
-          ) : (
-            results.map((ride) => (
-              <div key={ride.id} className="transportation-card">
-                <p>{ride.start_location} → {ride.end_location}</p>
-                <p>Time: {ride.ride_time}</p>
-                <p>Seats: {ride.passengers}</p>
-                
-                <button className="btn reserve-ridebtn-from-searchResult1" onClick={handlereserve}>reserve</button>
-              </div>
-            ))
-          )}
-        </div>
+        {loading ? (
+          <p>Loading rides...</p>
+        ) : (
+          <div className="transportation-grid">
+            {results.length === 0 ? (
+              <p>No matching rides found.</p>
+            ) : (
+              results.map((ride) => (
+                <div key={ride.id} className="transportation-card">
+                  <p>
+                    {ride.start_location} → {ride.end_location}
+                  </p>
+                  <p>Time: {ride.ride_time}</p>
+                  <p>Seats: {ride.passengers}</p>
+
+                  <button
+                    className="btn reserve-ridebtn-from-searchResult1"
+                    onClick={() => handlereserve(ride)} // ✅ FIXED
+                  >
+                    reserve
+                  </button>
+                </div>
+              ))
+            )}
+          </div>
+        )}
       </section>
     </div>
   );
 };
 
 export default Search_results;
-
