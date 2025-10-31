@@ -12,13 +12,14 @@
   align-items: center;
 }
 
-.logout-btn {
+.Logout-link {
   background: #f53b57;
   border: none;
   color: #fff;
   padding: 0.6rem 1rem;
   border-radius: 6px;
   cursor: pointer;
+  list-style: none;
 }
 
 .profile-header {
@@ -30,6 +31,8 @@
 .profile-info {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -44,6 +47,14 @@
   align-items: center;
   font-weight: bold;
   font-size: 18px;
+}
+
+.UserData-preview {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
 }
 
 .main-content {

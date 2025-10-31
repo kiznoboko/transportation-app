@@ -20,6 +20,8 @@ const Landing_page1 = () => {
     date: null,
     time: "",
     rideType: "",
+      payment_method: "",
+      passengers : ""
   });
 
   const handleChange = (e) => {
@@ -249,6 +251,49 @@ const Landing_page1 = () => {
             <option value="co-joint">co-joint</option>
           </select>
         </div>
+
+        {/* <div className="form-group-box2-item1">
+          <select
+            name="payment_method"
+            value={formData.PaymentMethode}
+            onChange={handleChange}
+            className="form-group-box2-item1-payment_methodSelect"
+          >
+            <option value="" disabled>
+              your payment type
+            </option>
+            <option value="cash">cash</option>
+            <option value="paypal">paypal</option>
+            <option value="card">card</option>
+          </select>
+        </div> */}
+        <select
+  name="payment_method"
+  value={formData.payment_method}
+  onChange={handleChange}
+  className="form-group-box2-item1-payment_methodSelect"
+>
+  <option value="" disabled>your payment type</option>
+  <option value="cash">cash</option>
+  <option value="paypal">paypal</option>
+  <option value="card">card</option>
+</select>
+
+             <select
+                    id="passengers"
+                    name="passengers"
+                    value={formData.passengers}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value="">Select passengers</option>
+                    <option value="1">1 passenger</option>
+                    <option value="2">2 passengers</option>
+                    <option value="3">3 passengers</option>
+                    <option value="4">4 passengers</option>
+                    <option value="5">5 passengers</option>
+                  </select>
+
 
         <button
           type="button"

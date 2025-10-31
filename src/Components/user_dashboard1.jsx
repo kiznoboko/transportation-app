@@ -812,7 +812,7 @@
 // }
 
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 import "../Styles/dashboard1.css";
@@ -828,6 +828,30 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("new");
+  const [UserData, setUserData] = useState(null);
+    // Controlled form state
+  const [formData, setFormData] = useState({
+    from: "",
+    to: "",
+    date: "",
+    time: "",
+    passengers: "",
+    paymentMethod: "",
+    rideType: "normal", // default ride_type
+    // notes: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+ useEffect(() => {
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+      console.log("setted Data", JSON.parse(storedUserData))
+    }
+  }, []); // ✅ Empty dependency array runs once on mount
+
 
   const RedirecttoSearchResultPage = () => {
   // Format date string to YYYY-MM-DD if it's a Date object or valid string
@@ -857,23 +881,7 @@ export default function Dashboard() {
   });
 };
 
-
-  // Controlled form state
-  const [formData, setFormData] = useState({
-    from: "",
-    to: "",
-    date: "",
-    time: "",
-    passengers: "",
-    paymentMethod: "",
-    rideType: "normal", // default ride_type
-    // notes: "",
-  });
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  // Handle form input changes
+// Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -948,6 +956,11 @@ export default function Dashboard() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("userData")
+    navigate("/")
+  }
+
   return (
     <div className="dashboard-page">
       {/* Navigation Bar */}
@@ -956,7 +969,7 @@ export default function Dashboard() {
           <h2>Transportation App Design</h2>
         </div>
         <div className="nav-right">
-          <Link to="/">Logout</Link>
+          <li onClick={handleLogout} className="Logout-link">Logout</li>
         </div>
       </nav>
 
@@ -964,10 +977,17 @@ export default function Dashboard() {
       <header className="profile-header">
         <div className="profile-info">
           <div className="avatar">A</div>
-          <div>
-            <h3>Admin</h3>
-            <p>admin@admin.cim</p>
-          </div>
+          <div className="UserData-preview">
+          {UserData ? (
+    <>
+      <h3>{UserData.username}</h3>
+      <p>{UserData.email}</p>
+      <p>Member since: {UserData.created_at}</p>
+    </>
+  ) : (
+    <p>Loading user data...</p>
+  )}
+  </div>
         </div>
       </header>
 

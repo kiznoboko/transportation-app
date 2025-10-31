@@ -829,6 +829,7 @@ const User_interface = () => {
   } else {
     setMessage("Login successful!");
     console.log("Logged in user:", data);
+    localStorage.setItem("userData", JSON.stringify(data))
     navigate("/dashboard");
   }
 };
@@ -920,6 +921,8 @@ const User_interface = () => {
               </div>
               <button type="submit" className="submit-btn submit-login-password">Sign In</button>
             </form>
+           
+             {message && <p className="message">{message}</p>}
           </div>
 
           {/* Register Form */}
@@ -964,6 +967,7 @@ const User_interface = () => {
               </div>
               <button type="submit" className="submit-btn submit-Register-password">Register</button>
             </form>
+            {message && <p className="message">{message}</p>}
           </div>
         </div>
 
