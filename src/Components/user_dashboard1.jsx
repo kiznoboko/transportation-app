@@ -818,6 +818,7 @@ import { createClient } from "@supabase/supabase-js";
 import "../Styles/dashboard1.css";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Logo from "../../public/Logo.svg"
 
 // Supabase setup
 const supabaseUrl = "https://xdbhtxoheaqgrbruapxv.supabase.co"; // <-- your URL
@@ -829,6 +830,11 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("new");
   const [UserData, setUserData] = useState(null);
+  const [orderHistory, setOrderHistory] = useState([]);
+const [historyLoading, setHistoryLoading] = useState(false);
+
+// depends on UserData
+
     // Controlled form state
   const [formData, setFormData] = useState({
     from: "",
@@ -851,6 +857,30 @@ export default function Dashboard() {
       console.log("setted Data", JSON.parse(storedUserData))
     }
   }, []); // ✅ Empty dependency array runs once on mount
+
+useEffect(() => {
+  if (!UserData) return; // wait for userData to load
+
+  const fetchOrders = async () => {
+    setHistoryLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("ride_order")
+        .select("*")
+        .eq("email_address", UserData.email) // make sure your table has user_id column
+        .order("ride_date", { ascending: false });
+
+      if (error) throw error;
+      setOrderHistory(data || []);
+    } catch (err) {
+      console.error("Error fetching order history:", err);
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
+
+  fetchOrders();
+}, [UserData]); 
 
 
   const RedirecttoSearchResultPage = () => {
@@ -966,6 +996,9 @@ export default function Dashboard() {
       {/* Navigation Bar */}
       <nav className="nav-bar">
         <div className="nav-left">
+        
+            <img src={Logo} alt="Logo-image" />
+          
           <h2>Transportation App Design</h2>
         </div>
         <div className="nav-right">
@@ -1166,12 +1199,12 @@ export default function Dashboard() {
         )}
 
         {/* --- ORDER HISTORY TAB --- */}
-        {activeTab === "history" && (
+        {/* {activeTab === "history" && (
           <section className="order-history">
             <h3>Order History</h3>
             <p>View all your past and upcoming transportation bookings</p>
 
-            {/* TODO: Replace with dynamic data from Supabase */}
+            
             <div className="order-card">
               <div>
                 <h4>Casablanca → Rabat</h4>
@@ -1184,9 +1217,69 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* Add more order cards here */}
+            
           </section>
-        )}
+        )} */}
+
+        {/* {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    <p>View all your past and upcoming transportation bookings</p>
+
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : orderHistory.length === 0 ? (
+      <p>No orders found.</p>
+    ) : (
+      orderHistory.map((order) => (
+        <div key={order.id} className="order-card">
+          <div>
+            <h4>{order.start_location} → {order.end_location}</h4>
+            <p>
+              {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+            </p>
+          </div>
+          <div className={`order-status ${order.status}`}>
+            {order.status}
+          </div>
+          <div className="order-cost">
+            <p>{order.cost || "N/A"} MAD</p>
+            <span>{order.payment_method}</span>
+          </div>
+        </div>
+      ))
+    )}
+  </section>
+)} */}
+      {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : orderHistory.length === 0 ? (
+      <p>No orders found.</p>
+    ) : (
+      orderHistory.map((order) => (
+        <div key={order.id} className="order-card">
+          <div>
+            <h4>{order.start_location} → {order.destination}</h4>
+            <p>
+              {order.ride_date} | {order.ride_time} | {order.number_of_passengers} passenger(s)
+            </p>
+          </div>
+          <div className={`order-status ${order.ride_status.toLowerCase()}`}>
+            {order.ride_status}
+          </div>
+          <div className="order-cost">
+            <p>{order.price} MAD</p>
+            <span>{order.payment_type}</span>
+          </div>
+        </div>
+      ))
+    )}
+  </section>
+)}
+
       </main>
     </div>
   );

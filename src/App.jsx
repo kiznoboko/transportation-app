@@ -14,7 +14,8 @@ import Dashboard from "./Components/user_dashboard1.jsx";
 import SearchLocation from "./Components/search_location.jsx";
 import Payment_page from "./Components/payment_page.jsx";
 import PayasyouGo from "./Components/PayAsyougo.jsx";
-import ReservationPage from "./Components/ReservationPage.jsx"
+import ReservationPage from "./Components/ReservationPage.jsx";
+import Confirmation from "./Components/Confirmation.jsx";
 const App = () => {
   return (
     <>
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/Transporter_dashboard" element={<Transporter_dashboard/>} />
               <Route path="/Payment_page" element={<ReservationPage/>} />
               <Route path="/Payasyougo" element={<PayasyouGo/>} />
+              <Route path="/confirmation" element={<Confirmation/>} />
         </Routes>
     </>
   )
