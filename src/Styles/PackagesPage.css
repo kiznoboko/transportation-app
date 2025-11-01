@@ -60,6 +60,7 @@
   align-items: center;
   text-decoration: none;
   list-style: none;
+  gap: 10px;
 }
 
 .nav-links-lists {
@@ -464,6 +465,11 @@
 
 .footer-links a:hover {
   color: white;
+}
+
+.btn-signin {
+  border: none;
+  color : orange;
 }
 
 /* ===================== RESPONSIVE ===================== */

@@ -16,6 +16,7 @@ import Payment_page from "./Components/payment_page.jsx";
 import PayasyouGo from "./Components/PayAsyougo.jsx";
 import ReservationPage from "./Components/ReservationPage.jsx";
 import Confirmation from "./Components/Confirmation.jsx";
+import PackageDetailsPage from "./Components/PackageDetailsPage.jsx"
 const App = () => {
   return (
     <>
@@ -36,6 +37,7 @@ const App = () => {
               <Route path="/Payment_page" element={<ReservationPage/>} />
               <Route path="/Payasyougo" element={<PayasyouGo/>} />
               <Route path="/confirmation" element={<Confirmation/>} />
+               <Route path="/package/:id" element={<PackageDetailsPage />} />
         </Routes>
     </>
   )
