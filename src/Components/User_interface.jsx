@@ -801,38 +801,91 @@ const User_interface = () => {
   // };
 
 
-  const handleLogin = async (e) => {
+//   const handleLogin = async (e) => {
+//   e.preventDefault();
+//   setMessage("");
+
+//   // Check first table
+//   let { data, error } = await supabase
+//     .from("admin_test")
+//     .select("*")
+//     .eq("email", loginEmail)
+//     .eq("password", loginPassword)  // ⚠️ Plain text passwords are insecure
+//     .single();
+
+//   // If not found in first table, check second table
+//   if (error || !data) {
+//     ({ data, error } = await supabase
+//       .from("register")
+//       .select("*")
+//       .eq("email", loginEmail)
+//       .eq("password", loginPassword)
+//       .single());
+//   }
+
+//   if (error || !data) {
+//     setMessage("Invalid login or server error.");
+//     console.error(error);
+//   } else {
+//     setMessage("Login successful!");
+//     console.log("Logged in user:", data);
+//     localStorage.setItem("userData", JSON.stringify(data))
+//     navigate("/dashboard");
+//   }
+// };
+
+
+const handleLogin = async (e) => { 
   e.preventDefault();
   setMessage("");
 
-  // Check first table
+  let user = null;
+  let fromAdminTest = false;
+
+  // Check admin_test table
   let { data, error } = await supabase
     .from("admin_test")
     .select("*")
     .eq("email", loginEmail)
-    .eq("password", loginPassword)  // ⚠️ Plain text passwords are insecure
+    .eq("password", loginPassword) // ⚠️ Plain text passwords are insecure
     .single();
 
-  // If not found in first table, check second table
-  if (error || !data) {
+  if (data) {
+    user = data;
+    fromAdminTest = true;
+  } else {
+    // If not found, check register table
     ({ data, error } = await supabase
       .from("register")
       .select("*")
       .eq("email", loginEmail)
       .eq("password", loginPassword)
       .single());
+
+    if (data) {
+      user = data;
+    }
   }
 
-  if (error || !data) {
+  if (!user) {
     setMessage("Invalid login or server error.");
     console.error(error);
+    return;
+  }
+
+  // Login successful
+  setMessage("Login successful!");
+  console.log("Logged in user:", user);
+  localStorage.setItem("userData", JSON.stringify(user));
+
+  // Redirect based on table
+  if (fromAdminTest) {
+    navigate("/Admin_dashboard");
   } else {
-    setMessage("Login successful!");
-    console.log("Logged in user:", data);
-    localStorage.setItem("userData", JSON.stringify(data))
     navigate("/dashboard");
   }
 };
+
 
 
 
