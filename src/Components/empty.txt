@@ -1,0 +1,213 @@
+/* Add these styles to your User_interface.css
+.login_register_container {
+  position: relative;
+  width: 200%; 
+  height: 100%;
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+  transform: translateX(0); 
+}
+
+.user_interfaceLogin, .user_interfaceRegister {
+  width: 50%; 
+  flex-shrink: 0; 
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
+  overflow-y: auto; 
+}
+
+
+.ContainerLogin_register {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+}
+
+
+
+ */
+
+
+
+ INSERT INTO searched_locations (start_location, end_location, available_seats, ride_time, ride_type, price)
+VALUES 
+-- First trajectory: Morocco, Tamesna, CMC → Rabat, Centre Ville (20 km)
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 14:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 14:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 14:15:00', 'co-joint', 2 ),
+
+
+
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 16:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 16:15:00', 'co-joint', 2 ),
+
+
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 18:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 18:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Rabat, Centre Ville', 3, '2025-11-03 18:15:00', 'co-joint', 2 ),
+
+-- Second trajectory: Morocco, Tamesna, CMC → Casablanca, Mohammedia (60 km)
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 14:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 14:15:00', 'co-joint', 2 ),
+
+
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 16:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 16:15:00', 'vip', 7),
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 16:15:00', 'co-joint', 2),
+
+
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 18:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 18:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Casablanca, Mohammedia', 2, '2025-11-03 18:15:00', 'co-joint', 2 ),
+
+
+-- Third trajectory: Morocco, Tamesna, CMC → Skhirat, Ain Atiq (25 km)
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 14:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 15:15:00', 'co-joint', 2 ),
+
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 16:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 16:15:00', 'co-joint', 2  ),
+
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 18:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 18:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Skhirat, Ain Atiq', 4, '2025-11-03 18:15:00', 'co-joint', 2 ),
+
+
+
+
+
+-- Fourth trajectory: Morocco, Tamesna, CMC → Temara, Hay Nahda (15 km)
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 14:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 14:15:00', 'co-joint', 2),
+
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 16:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 16:15:00', 'co-joint', 2 ),
+
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 18:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 18:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Temara, Hay Nahda', 1, '2025-11-03 18:15:00', 'co-joint', 2 ),
+
+-- Fifth trajectory: Morocco, Tamesna, CMC → Kenitra, Ville Haute (40 km)
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 14:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 14:15:00', 'co-joint', 2 ),
+
+
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 16:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 16:15:00', 'co-joint', 2 ),
+
+
+
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 18:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 18:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Kenitra, Ville Haute', 5, '2025-11-03 18:15:00', 'co-joint', 2 ),
+
+
+-- Sixth trajectory: Morocco, Tamesna, CMC → Salé, Tabriquet (30 km)
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 14:15:00', 'normal', 3.5 ),
+
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 16:15:00', 'vip', 7 ),
+
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 18:45:00', 'co-joint', 2 ),
+
+-- Seventh trajectory: Morocco, Tamesna, CMC → Bouznika, Gare Routière (50 km)
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 14:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 14:15:00', 'normal', 3.5),
+
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 16:15:00', 'vip', 7 ),
+
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 18:45:00', 'co-joint', 2 ),
+
+-- Eighth trajectory: Morocco, Tamesna, CMC → Benslimane, Centre (35 km)
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 14:15:00', 'normal', 3.5 ),
+
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 16:15:00', 'vip', 7 ),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 16:15:00', 'vip', 7 ),
+
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 18:45:00', 'co-joint', 2 ),
+
+-- Ninth trajectory: Morocco, Tamesna, CMC → Sidi Yahya, Marché Central (45 km)
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 14:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 14:15:00', 'normal', 3.5),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 14:15:00', 'normal', 3.5),
+
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 16:15:00', 'vip', 7),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 16:15:00', 'vip', 7),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 16:15:00', 'vip', 7 ),
+
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 18:45:00', 'co-joint', 2 ),
+
+-- Tenth trajectory: Morocco, Tamesna, CMC → El Jadida, Plage (70 km)
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 14:15:00', 'normal', 3.5 ),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 14:15:00', 'normal', 3.5 ),
+
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 16:15:00', 'vip', 7),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 16:15:00', 'vip', 7),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 16:15:00', 'vip', 7),
+
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 18:45:00', 'co-joint', 2 ),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 18:45:00', 'co-joint', 2 );
+
+
+
+
+/* -- Sixth trajectory: Morocco, Tamesna, CMC → Salé, Tabriquet (30 km)
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 17:00:00', 'normal', 3.5 * 30),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 17:00:00', 'vip', 7 * 30),
+('Morocco, Tamesna, CMC', 'Salé, Tabriquet', 3, '2025-11-03 17:00:00', 'co-joint', 2 * 30 * 3),
+
+-- Seventh trajectory: Morocco, Tamesna, CMC → Bouznika, Gare Routière (50 km)
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 17:30:00', 'normal', 3.5 * 50),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 17:30:00', 'vip', 7 * 50),
+('Morocco, Tamesna, CMC', 'Bouznika, Gare Routière', 2, '2025-11-03 17:30:00', 'co-joint', 2 * 50 * 2),
+
+-- Eighth trajectory: Morocco, Tamesna, CMC → Benslimane, Centre (35 km)
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 18:00:00', 'normal', 3.5 * 35),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 18:00:00', 'vip', 7 * 35),
+('Morocco, Tamesna, CMC', 'Benslimane, Centre', 1, '2025-11-03 18:00:00', 'co-joint', 2 * 35 * 1),
+
+-- Ninth trajectory: Morocco, Tamesna, CMC → Sidi Yahya, Marché Central (45 km)
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 18:30:00', 'normal', 3.5 * 45),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 18:30:00', 'vip', 7 * 45),
+('Morocco, Tamesna, CMC', 'Sidi Yahya, Marché Central', 3, '2025-11-03 18:30:00', 'co-joint', 2 * 45 * 3),
+
+-- Tenth trajectory: Morocco, Tamesna, CMC → El Jadida, Plage (70 km)
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 19:00:00', 'normal', 3.5 * 70),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 19:00:00', 'vip', 7 * 70),
+('Morocco, Tamesna, CMC', 'El Jadida, Plage', 2, '2025-11-03 19:00:00', 'co-joint', 2 * 70 * 2); */

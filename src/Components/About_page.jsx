@@ -1,9 +1,19 @@
 import React from "react";
 import "../Styles/About2.css";
 import Logo from "./Logo.jsx";
+import {useState} from "react"
 import {Link, useNavigate} from "react-router-dom";
-
+import dropdown_menu from "./images/menu_dropdown_1.png"
 export default function About() {
+  const [isNavActive, setIsNavActive] = useState(false);
+  const handleNavDropdown = () => {
+    setIsNavActive(true); // open dropdown
+
+    // Automatically close after 3 seconds (3000ms)
+    setTimeout(() => {
+      setIsNavActive(false);
+    }, 3000);
+  };
       const navigate = useNavigate()
   const handleGetStartedClick = () => {
       navigate("/user_interface", { state: { registerActive: true } });
@@ -16,34 +26,64 @@ export default function About() {
   return (
     <div className="rideconnect">
       {/* Navbar */}
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="nav-left">
           <Logo/>
+          <img src={dropdown_menu} alt="" className="dropdown-image" onClick={handleNavDropdown} />
         </div>
+        <div className={`nav-links-dropdown ${isNavActive ? "active" : ""}`}></div>
         <div className="nav-center">
-          <a href="/">Home</a>
-          <a href="#">How It Works</a>
-          <a href="/Available_packages">Pricing</a>
+          <Link to="/" className="nav-links">Home</Link>
+          <Link to="#" className="nav-links">How It Works</Link>
+          <Link to="/Available_packages" className="nav-links">Pricing</Link>
          
           <a  className="active">About</a>
         </div>
         <div className="nav-right">
-          <button  className='signin signin-register-link' onClick={handleSignInclick}>Sign In</button>
-          <button  className="getstarted signin-register-link" onClick={handleGetStartedClick}>Get Started</button>
-          {/* <button className="signin">Sign In</button>
-          <button className="getstarted">Get Started</button> */}
+          <button  className='signin signin-register-link nav-links' onClick={handleSignInclick}>Sign In</button>
+          <button  className="getstarted signin-register-link nav-links" onClick={handleGetStartedClick}>Get Started</button>
+          
         </div>
-      </nav>
+      </nav> */}
+
+<nav className="navbar">
+  <div className="nav-left">
+    <Logo />
+    <img
+      src={dropdown_menu}
+      alt="menu"
+      className="dropdown-image"
+      onClick={handleNavDropdown}
+    />
+  </div>
+
+  {/* Dropdown container */}
+  <div className={`nav-links-dropdown ${isNavActive ? "active" : ""}`}>
+    <div className="nav-center-dropdown">
+      <Link to="/" className="nav-links">Home</Link>
+      <Link to="#" className="nav-links">How It Works</Link>
+      <Link to="/Available_packages" className="nav-links">Pricing</Link>
+      <a className="active nav-links">About</a>
+    </div>
+    <div className="nav-right-dropdown">
+      <button className='signin signin-register-link nav-links' onClick={handleSignInclick}>Sign In</button>
+      <button className="getstarted signin-register-link nav-links" onClick={handleGetStartedClick}>Get Started</button>
+    </div>
+  
+  </div>
+</nav>
+
+
 
       {/* Hero / About */}
       <section className="hero">
         <div className="hero-content">
-          <h4>About RideConnect Morocco</h4>
+          <h4>About FindTransportation Morocco</h4>
           <h1>
             Revolutionizing educational transportation across Morocco with smart,
             efficient, and affordable solutions for students and trainers.
           </h1>
-          <button>Get Started Today</button>
+          <button className="btn btn-get-started" onClick={handleGetStartedClick}>Get Started Today</button>
         </div>
       </section>
 
@@ -52,7 +92,7 @@ export default function About() {
         <div className="mission-text">
           <h2>Our Mission</h2>
           <p>
-            RideConnect Morocco was born from a simple observation: students and
+            FindTransportation Morocco was born from a simple observation: students and
             trainers across Morocco’s educational institutions needed a better
             way to plan and access transportation services.
           </p>
@@ -190,7 +230,7 @@ export default function About() {
           Join thousands of students and trainers across Morocco who trust
           RideConnect for their daily commute.
         </p>
-        <button>Get Started</button>
+        <button type="submit" className="btn btn-getstarted" onClick={handleGetStartedClick}>Get Started</button>
       </section>
 
       {/* Footer */}

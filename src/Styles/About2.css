@@ -10,7 +10,7 @@
   line-height: 1.6;
 }
 
-/* Navbar */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -20,6 +20,11 @@
   border-bottom: 1px solid #eee;
 }
 
+.dropdown-image {
+  width: 35px;
+  height: 35px;
+  display: none;
+}
 .nav-left h2 span {
   color: #ff6b2b;
 }
@@ -42,6 +47,13 @@
   border-bottom: 1px solid orange;
 }
 
+.signin-register-link {
+  width: 70px;
+  border: none;
+  height: 20px;
+  cursor: pointer;
+}
+
 .signin {
   background: transparent;
   border: 1px solid #ccc;
@@ -50,14 +62,12 @@
 .getstarted {
   background: #ff6b2b;
   color: white;
-  border-radius: 4px;
+  border-radius: 50px;
 }
 
-.nav-right {
-  
-}
 
-/* Hero Section */
+
+
 .hero {
   background: #ff6b2b;
   color: white;
@@ -76,7 +86,7 @@
   cursor: pointer;
 }
 
-/* Mission */
+
 .mission {
   display: flex;
   align-items: flex-start;
@@ -96,7 +106,7 @@
   background: #fafafa;
 }
 
-/* Stats */
+
 .stats {
   display: flex;
   justify-content: space-around;
@@ -110,7 +120,6 @@
   font-size: 1.8rem;
 }
 
-/* Features */
 .features {
   text-align: center;
   padding: 60px 100px;
@@ -131,7 +140,6 @@
   text-align: left;
 }
 
-/* Serving Section */
 .serving {
   display: flex;
   align-items: center;
@@ -140,7 +148,6 @@
   gap: 40px;
 }
 
-/* Core Values */
 .values {
   text-align: center;
   background: #fafafa;
@@ -157,7 +164,7 @@
   max-width: 250px;
 }
 
-/* CTA */
+
 .cta {
   text-align: center;
   background: #ff6b2b;
@@ -176,50 +183,7 @@
 }
 
 
-/* .footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  background: #111;
-  color: #ddd;
-  padding: 60px 80px;
-}
 
-.footer h3 span {
-  color: #ff6b2b;
-}
-
-.footer a {
-  color: #bbb;
-  display: block;
-  margin: 5px 0;
-  text-decoration: none;
-}
-
-.footer-bottom {
-  text-align: center;
-  background: #0b0b0b;
-  color: #aaa;
-  padding: 15px;
-  font-size: 0.9rem;
-}
-
-.support_connected_container {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    flex-direction: row;
-}
-
-.footer-links, .footer-support, .footer-contact {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-} */
-
-/* Footer */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -247,7 +211,7 @@
   line-height: 1.5;
 }
 
-/* Wrapper for the 3 grouped sections */
+
 .support_connected_container {
   flex: 2;
   display: flex;
@@ -258,7 +222,7 @@
   min-width: 400px;
 }
 
-/* Each footer section (Quick Links, Support, Contact) */
+
 .footer-links,
 .footer-support,
 .footer-contact {
@@ -294,7 +258,7 @@
   margin: 2px 0;
 }
 
-/* Footer Bottom Bar */
+
 .footer-bottom {
   text-align: center;
   background: #0b0b0b;
@@ -302,4 +266,111 @@
   padding: 15px;
   font-size: 0.9rem;
   letter-spacing: 0.3px;
+}
+
+
+
+
+
+.dropdown-image {
+  width: 35px;
+  height: 35px;
+  display: none; 
+}
+
+.nav-links-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.nav-center-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+
+}
+
+.nav-right-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  
+}
+
+.nav-links {
+  list-style: none;
+  text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+  nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+
+
+  .dropdown-image {
+    display: block;
+    cursor: pointer;
+  }
+
+ 
+  .nav-links-dropdown {
+    display: none; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #fff;
+    position: absolute;
+    top: 60px; 
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    gap: 15px; 
+  }
+
+ 
+  .nav-links-dropdown.active {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    width: 100%;
+  }
+
+  
+  .nav-links,
+  .nav-center,
+  .nav-right,
+  .nav-center-dropdown,
+  .nav-right-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+    list-style: none;
+    text-decoration: none;
+  }
+
+ 
+  .nav-links a,
+  .nav-links button,
+  .nav-center-dropdown a,
+  .nav-right-dropdown button {
+    width: 100%;
+  }
 }

@@ -4,12 +4,19 @@
   height: 100%;
 }
 .nav-bar {
-  background: #222;
+  background: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   color: #fff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.nav-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
 .Logout-link {
@@ -215,4 +222,22 @@ textarea {
 
 .order-cost {
   text-align: right;
+}
+
+
+.package {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.package-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 600px;
+
 }

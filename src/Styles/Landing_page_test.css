@@ -39,6 +39,13 @@ nav {
   z-index: 1000;
 }
 
+.dropdown1 {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: none;
+}
+
 .LP-navList {
   display: flex;
   list-style: none;
@@ -46,8 +53,28 @@ nav {
   gap: 2rem;
 }
 
+.general-right-navlinks {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
 .LP-navList-middle {
-  gap: 2.5rem;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.LP-navList-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
 }
 
 .LP-navList_Lists {
@@ -201,6 +228,12 @@ nav {
 .form-group-box2-item1_form-field1,
 .form-group-box2-item1_form-field2 {
   flex: 1;
+  
+}
+
+.datetime {
+  display: flex;
+  justify-content: space-between;
 }
 
 .form-group-box2-item1_form-field1_form_label,
@@ -244,7 +277,7 @@ nav {
 }
 
 .LPMS-section1_box2_search_submit_btn:hover {
-  background-color: #E67E22;
+  background-color: blue;
   transform: translateY(-2px);
 }
 
@@ -934,7 +967,7 @@ nav {
 } */
 
 .newsLetterSection {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -983,6 +1016,11 @@ nav {
 
 /* Responsive Design */
 @media (max-width: 1200px) {
+  nav {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem 2rem;
+  }
   .section1 {
     flex-direction: column;
     text-align: center;
@@ -995,7 +1033,7 @@ nav {
 
 @media (max-width: 992px) {
   nav {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     padding: 1rem 2rem;
   }
@@ -1013,7 +1051,58 @@ nav {
   }
 }
 
+/* .LP-minimumNav {
+  display: none;
+} */
+
 @media (max-width: 768px) {
+  /* .LP-navList_Lists  {
+    display: none;
+  } */
+
+  .LP-navLinks {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    background: white;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    padding: 1rem 0;
+  }
+
+  .LP-navLinks.active {
+    display: flex;
+  }
+  .dropdown1 {
+    display: block;
+  }
+
+   nav {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction: column;
+    /* gap: 1rem; */
+    
+    padding: 1rem 2rem;
+  }
+
+  .LP-navList-right {
+     flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+
+  }
+
+  .LP-navList-middle {
+     flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+
+  }
   .LPMS_section1_box1_header1 {
     font-size: 2rem;
   }
@@ -1029,6 +1118,29 @@ nav {
   footer {
     grid-template-columns: 1fr;
   }
+
+
+  /* .LP-minimumNav {
+    display: block;
+  }
+
+  .LP-Nav-container {
+    display: none;
+  }
+
+  .LP-Nav-container.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dropdown-mainNav {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-mainNav.rotated {
+    transform: rotate(90deg);
+  } */
 }
 
 @media (max-width: 576px) {

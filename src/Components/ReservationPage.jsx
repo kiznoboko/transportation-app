@@ -790,7 +790,7 @@ const reservationData = {
             </p>
             <p>
               <strong>Price per seat:</strong>{" "}
-              <span className="highlight">{pricePerSeat} MAD</span>
+              <span className="highlight">{pricePerSeat} MAD/KM</span>
             </p>
           </div>
         </section>
@@ -863,7 +863,7 @@ const reservationData = {
           </h2>
           <div className="payment-summary">
             <p>
-              <span>Price per seat</span> <span>{pricePerSeat} MAD</span>
+              <span>Price per seat</span> <span>{pricePerSeat} MAD/KM</span>
             </p>
             <p>
               <span>Number of seats</span> <span>{formData.passengers}</span>

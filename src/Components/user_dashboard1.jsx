@@ -1682,7 +1682,7 @@ useEffect(() => {
         
             <img src={Logo} alt="Logo-image" />
           
-          <h2>Transportation App Design</h2>
+          
         </div>
         <div className="nav-right">
           <li onClick={handleLogout} className="Logout-link">Logout</li>
@@ -1897,7 +1897,7 @@ useEffect(() => {
         )}
 
        
-      {activeTab === "history" && (
+      {/* {activeTab === "history" && (
   <section className="order-history">
     <h3>Order History</h3>
     {historyLoading ? (
@@ -1917,14 +1917,285 @@ useEffect(() => {
             {order.ride_status}
           </div>
           <div className="order-cost">
-            <p>{order.price} MAD</p>
+            <p>{order.price} MAD/KM</p>
             <span>{order.payment_type}</span>
           </div>
         </div>
       ))
     )}
   </section>
+)} */}
+
+
+      {/* {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : orderHistory.length === 0 ? (
+      <p>No orders found.</p>
+    ) : (
+      orderHistory.map((order) => (
+        <div key={order.id} className="order-card">
+          <div>
+            <h4>{order.start_location} → {order.end_location}</h4>
+            <p>
+              {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+            </p>
+          </div>
+
+        
+          <div className={`order-status ${order.status.toLowerCase()}`}>
+            {order.status === "confirmed" ? (
+              <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
+            ) : order.status === "pending" ? (
+              <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
+            ) : (
+              <span>{order.status}</span>
+            )}
+          </div>
+
+          <div className="order-cost">
+            <p>{order.price} MAD/KM</p>
+            <span>{order.payment_method}</span>
+          </div>
+        </div>
+      ))
+    )}
+  </section>
+)} */}
+
+
+
+{/* {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : orderHistory.length === 0 ? (
+      <p>No orders found.</p>
+    ) : (
+      orderHistory.map((order) => {
+        const status = order.status || "pending"; // Default to "pending" if status is undefined
+
+        return (
+          <div key={order.id} className="order-card">
+            <div>
+              <h4>{order.start_location} → {order.end_location}</h4>
+              <p>
+                {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+              </p>
+            </div>
+
+           
+            <div className={`order-status ${status.toLowerCase()}`}>
+              {status === "confirmed" ? (
+                <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
+              ) : status === "pending" ? (
+                <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
+              ) : (
+                <span>{status}</span>
+              )}
+            </div>
+
+            <div className="order-cost">
+              <p>{order.price} MAD/KM</p>
+              <span>{order.payment_method}</span>
+            </div>
+          </div>
+        );
+      })
+    )}
+  </section>
+)} */}
+{/* {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : !orderHistory || orderHistory.length === 0 ? (
+      <p>No orders found for this account.</p>
+    ) : (
+      orderHistory.map((order) => {
+        // Check if there is a package associated with the account
+        const isPackageAssociated = !!userPackage; // Assuming userPackage is the variable holding the package data
+
+        // Determine the order status
+        const isPaid = ["card", "paypal", "credit"].includes(order.payment_method.toLowerCase());
+        const status = (isPaid || isPackageAssociated) ? "confirmed" : "pending"; 
+        
+        return (
+          <div key={order.id} className="order-card">
+            <div>
+              <h4>{order.start_location} → {order.end_location}</h4>
+              <p>
+                {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+              </p>
+            </div>
+
+           
+            <div className={`order-status ${status}`}>
+              {status === "confirmed" ? (
+                <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
+              ) : (
+                <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
+              )}
+            </div>
+
+            <div className="order-cost">
+              <p>{order.price} MAD/KM</p>
+              <span>{order.payment_method}</span>
+            </div>
+          </div>
+        );
+      })
+    )}
+  </section>
+)} */}
+
+
+{/* {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : !orderHistory || orderHistory.length === 0 ? (
+      <p>No orders found for this account.</p>
+    ) : (
+      orderHistory.map((order) => {
+        // Check if there is a package associated with the account
+        const isPackageAssociated = includedPackage.length > 0; // Check if the user has a package
+        
+        // Check if the payment method is valid (card, paypal, or credit) and ensure order.payment_method is defined
+        const isPaid = order.payment_method && ["card", "paypal", "credit"].includes(order.payment_method.toLowerCase());
+        const status = (isPaid || isPackageAssociated) ? "confirmed" : "pending";
+
+        return (
+          <div key={order.id} className="order-card">
+            <div>
+              <h4>{order.start_location} → {order.end_location}</h4>
+              <p>
+                {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+              </p>
+            </div>
+
+           
+            <div className={`order-status ${status}`}>
+              {status === "confirmed" ? (
+                <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
+              ) : (
+                <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
+              )}
+            </div>
+
+            <div className="order-cost">
+              <p>{order.price} MAD/KM</p>
+              <span>{order.payment_type}</span>
+            </div>
+          </div>
+        );
+      })
+    )}
+  </section>
+)} */}
+
+
+{activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : !orderHistory || orderHistory.length === 0 ? (
+      <p>No orders found for this account.</p>
+    ) : (
+      orderHistory.map((order) => {
+        // Check if there is a package associated with the account
+        const isPackageAssociated = includedPackage.length > 0; // Check if the user has a package
+        
+        // Check if the payment type is valid (card, paypal, or credit) and ensure it's not cash
+        const isPaid = order.payment_type && ["card", "paypal", "credit"].includes(order.payment_type.toLowerCase());
+
+        // Determine the order status: If paid or package associated, mark as confirmed, otherwise pending.
+        const status = (isPaid || isPackageAssociated) && order.payment_type !== "cash" ? "confirmed" : "pending";
+
+        return (
+          <div key={order.id} className="order-card">
+            <div>
+              <h4>{order.start_location} → {order.end_location}</h4>
+              <p>
+                {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+              </p>
+            </div>
+
+            {/* Conditional rendering of order status */}
+            <div className={`order-status ${status}`}>
+              {status === "confirmed" ? (
+                <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
+              ) : (
+                <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
+              )}
+            </div>
+
+            <div className="order-cost">
+              <p>{order.price} MAD/KM</p>
+              <span>{order.payment_type}</span>
+            </div>
+          </div>
+        );
+      })
+    )}
+  </section>
 )}
+
+
+
+{/* {activeTab === "history" && (
+  <section className="order-history">
+    <h3>Order History</h3>
+    {historyLoading ? (
+      <p>Loading order history...</p>
+    ) : !orderHistory || orderHistory.length === 0 ? (
+      <p>No orders found for this account.</p>
+    ) : (
+      orderHistory.map((order) => {
+        // Check if there is a package associated with the account
+        const isPackageAssociated = includedPackage.length > 0; // Check if the user has a package
+        
+        // Check if the payment type is valid (card, paypal, or credit) and ensure order.payment_type is defined
+        const isPaid = order.payment_type && ["card", "paypal", "credit"].includes(order.payment_type.toLowerCase());
+        const status = (isPaid || isPackageAssociated) ? "confirmed" : "pending";
+
+        return (
+          <div key={order.id} className="order-card">
+            <div>
+              <h4>{order.start_location} → {order.end_location}</h4>
+              <p>
+                {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
+              </p>
+            </div>
+
+           
+            <div className={`order-status ${status}`}>
+              {status === "confirmed" ? (
+                <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
+              ) : (
+                <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
+              )}
+            </div>
+
+            <div className="order-cost">
+              <p>{order.price} MAD/KM</p>
+              <span>{order.payment_type}</span>
+            </div>
+          </div>
+        );
+      })
+    )}
+  </section>
+)} */}
+
+
+
 
       </main>
     </div>

@@ -10,9 +10,12 @@ import profile from "./images/profile.png";
 import rideshare from "./images/rideshare.png";
 import schedule from "./images/schedule.png";
 import maplocation from "./images/map-location.png";
-import PayasyouGo from "./PayAsyougo.jsx";
+
+import menu_dropdown_1 from "./images/menu_dropdown_1.png";
+import menu_dropdown_2 from "./images/menu_dropdown_2.png"
 
 const Landing_page1 = () => {
+  const [isNavActive, setIsNavActive] = useState(false);
     const navigate = useNavigate()
       const [formData, setFormData] = useState({
     departure: "",
@@ -50,9 +53,19 @@ const Landing_page1 = () => {
     navigate("/user_interface", { state: { registerActive: true } });
   };
 
-  const handlePayasyouGo = () => {
-    navigate("/Payasyougo")
-  }
+const handlePayasyouGo = (rideType) => {
+  // Update the state with the selected ride type
+  const updatedFormData = { ...formData, rideType };
+
+  // Navigate to the SearchResult page with the updated form data
+  navigate("/SearchResult", { state: updatedFormData });
+};
+
+
+const handleNavDropdown = () => {
+    // Toggle the nav bar visibility on small screens
+    setIsNavActive((prevState) => !prevState);
+  };
 
     
     return (
@@ -60,11 +73,13 @@ const Landing_page1 = () => {
 
             <div className="Landing_pageWrapper">
                 {/* navigation */}
-                <nav>
-                       <ul className="LP-navList LP-navList-left">
+                {/* <nav>
+                       <ul className={`LP-navList LP-navList-left  ${isNavActive ? "hidden" : ""}`}>
                             <li className="LP-navList_Lists logo">
                                 <Logo/>
                             </li>
+                            <img src={menu_dropdown_1} alt="" className="dropdown1" onClick={handleNavDropdown}/>
+
                         </ul>
 
                         <ul className="LP-navList LP-navList-middle">
@@ -76,9 +91,7 @@ const Landing_page1 = () => {
                                 <Link className="LP-navList_Lists" to="/Available_packages">
                                         Pricing
                                 </Link>
-                                {/* <li className="LP-navList_Lists">
-                                    About
-                                </li> */}
+                            
                                 <Link className="LP-navList_Lists" to="/About">
                                     About
                                 </Link>
@@ -94,7 +107,143 @@ const Landing_page1 = () => {
                                 </li>
 
                         </ul> 
-                </nav>
+                </nav> */}
+
+                <nav className="LP-Nav">
+      <ul className="LP-navList LP-navList-left">
+        <li className="logo">
+          <Logo />
+        </li>
+        <img
+          src={menu_dropdown_1}
+          alt="menu"
+          className="dropdown1"
+          onClick={handleNavDropdown}
+        />
+      </ul>
+
+      <div className={`LP-navLinks general-right-navlinks ${isNavActive ? "active" : ""}`}>
+        <ul className="LP-navList LP-navList-middle">
+          <li className="LP-navList_Lists">How it Works</li>
+          <Link to="/Available_packages" className="LP-navList_Lists">Pricing</Link>
+          <Link to="/About" className="LP-navList_Lists">About</Link>
+        </ul>
+
+        <ul className="LP-navList LP-navList-right">
+          <Link to="/user_interface" className="LP-navList_Lists">Sign in</Link>
+          <li onClick={handleGetStartedClick} className="LP-navList_Lists LP-navList-right-GetStarted">
+            Get Started
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+                 {/* <nav className="LP-Nav">
+      
+      <div className={`LP-minimumNav ${isNavActive ? "hidden" : ""}`}>
+        <ul className="LP-minimumNav-lists">
+          <li
+            className={`LP-minimumNav-list dropdown-mainNav ${isNavActive ? "rotated" : ""}`}
+            onClick={handleNavDropdown}
+          >
+            |||
+          </li>
+          <li className="LP-minimumNav-list">
+            <Logo />
+          </li>
+        </ul>
+      </div>
+
+     
+      <div className={`LP-Nav-container ${isNavActive ? "active" : ""}`}>
+        <ul className="LP-navList LP-navList-left">
+          <li className="LP-navList_Lists logo">
+            <Logo />
+          </li>
+        </ul>
+
+        <ul className="LP-navList LP-navList-middle">
+          <li className="LP-navList_Lists">How it Works</li>
+
+          <Link className="LP-navList_Lists" to="/Available_packages">
+            Pricing
+          </Link>
+
+          <Link className="LP-navList_Lists" to="/About">
+            About
+          </Link>
+        </ul>
+
+        <ul className="LP-navList LP-navList-right">
+          <Link to="/user_interface" className="LP-navList_Lists">
+            Sign in
+          </Link>
+
+          <li
+            className="LP-navList_Lists LP-navList-right-GetStarted"
+            onClick={handleGetStartedClick}
+          >
+            Get Started
+          </li>
+        </ul>
+      </div>
+    </nav> */}
+
+
+    {/* <nav className="LP-Nav">
+     
+      <div className={`LP-minimumNav ${isNavActive ? "hidden" : ""}`}>
+        <ul className="LP-minimumNav-lists">
+          <li
+            className={`LP-minimumNav-list dropdown-mainNav ${
+              isNavActive ? "rotated" : ""
+            }`}
+            onClick={handleNavDropdown}
+          >
+            |||
+          </li>
+          <li className="LP-minimumNav-list">
+            <Logo />
+          </li>
+        </ul>
+      </div>
+
+     
+      <div className={`LP-Nav-container ${isNavActive ? "active" : ""}`}>
+        <ul className="LP-navList LP-navList-left">
+          <li className="LP-navList_Lists logo">
+            <Logo />
+          </li>
+        </ul>
+
+        <ul className="LP-navList LP-navList-middle">
+          <li className="LP-navList_Lists">How it Works</li>
+
+          <Link className="LP-navList_Lists" to="/Available_packages">
+            Pricing
+          </Link>
+
+          <Link className="LP-navList_Lists" to="/About">
+            About
+          </Link>
+        </ul>
+
+        <ul className="LP-navList LP-navList-right">
+          <Link to="/user_interface" className="LP-navList_Lists">
+            Sign in
+          </Link>
+
+          <li
+            className="LP-navList_Lists LP-navList-right-GetStarted"
+            onClick={handleGetStartedClick}
+          >
+            Get Started
+          </li>
+        </ul>
+      </div>
+    </nav> */}
 
                     {/* main Section */}
                 <div className="Landing_pageMainSection">
@@ -206,7 +355,7 @@ const Landing_page1 = () => {
         </div>
 
         <div className="form-group-box2-item1">
-          <div className="form-group-box2-item1_form-field1">
+          <div className="form-group-box2-item1_form-field1 datetime">
             <label htmlFor="date" className="form-group-box2-item1_form-field1_form_label">Date</label>
             {/* <input
               type="date"
@@ -277,6 +426,7 @@ const Landing_page1 = () => {
   <option value="cash">cash</option>
   <option value="paypal">paypal</option>
   <option value="card">card</option>
+  <option value="card">credit</option>
 </select>
 
              <select
@@ -303,7 +453,7 @@ const Landing_page1 = () => {
           Search Available Rides
         </button>
       </form>
-                            <p className="LPMS-section1_box2_payment_quote">💳 Payment accepted: Cash or Card</p>
+                            <p className="LPMS-section1_box2_payment_quote">💳 Payment accepted: Cash or Card or credits</p>
                         </div>
 
                     </span>
@@ -431,8 +581,8 @@ const Landing_page1 = () => {
                                 <p className="LPMS-section3_title_desctiption">Simple, transparent pricing based on distance traveled</p>
                              </div>
                         </div>
-                        <div className="LPMS-section3 box2">
-                                    {/* part1 */}
+                        {/* <div className="LPMS-section3 box2">
+                                   
                                 <div className="LPMS-section3_box2_items LPMS-section3_box2_items_part1">
                                         <span className="LPMS-section3_box2_items1">
                                             <h3 className="LPMS-section3_box2_items1_title">Normal Ride</h3>
@@ -446,19 +596,19 @@ const Landing_page1 = () => {
                                         <span className="LPMS-section3_box2_items3">
                                             <ul className="LPMS-section3_box2_items3_listDescription">
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                   
                                                     ✅ Comfortable seating
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                   
                                                     ✅ Direct route
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Standard service
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                     {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                     
                                                     ✅ Real-time tracking
                                                 </li>
                                             </ul>
@@ -466,7 +616,7 @@ const Landing_page1 = () => {
                                         <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={handlePayasyouGo}>Select Normal Ride</button>
                                 </div>
 
-                                    {/* part1 */}
+                                   
 
                                     <div className="LPMS-section3_box2_items LPMS-section3_box2_items_part1">
                                         <span className="LPMS-section3_box2_items1">
@@ -481,23 +631,23 @@ const Landing_page1 = () => {
                                         <span className="LPMS-section3_box2_items3">
                                             <ul className="LPMS-section3_box2_items3_listDescription">
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Premium vehicles
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Priority service
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Extra comfort
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                     {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                     
                                                     ✅ Professional drivers
                                                 </li>
                                                  <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                     {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Climate control
                                                 </li>
                                             </ul>
@@ -505,7 +655,7 @@ const Landing_page1 = () => {
                                         <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={handlePayasyouGo}>Select VIP Ride</button>
                                 </div>
 
-                                {/* part3 */}       
+                                   
                                         <div className="LPMS-section3_box2_items LPMS-section3_box2_items_part1">
                                         <span className="LPMS-section3_box2_items1">
                                             <h3 className="LPMS-section3_box2_items1_title">Co-joint (Shared)</h3>
@@ -519,19 +669,19 @@ const Landing_page1 = () => {
                                         <span className="LPMS-section3_box2_items3">
                                             <ul className="LPMS-section3_box2_items3_listDescription">
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                   
                                                     ✅ Most affordable option
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Eco-friendly
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                    {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Meet fellow students
                                                 </li>
                                                 <li className="LPMS-section3_box2_items3_listDescription_list">
-                                                     {/* <img src="" alt="" className="LPMS-section3_box2_items3_list_checkbox" /> */}
+                                                    
                                                     ✅ Similar routes
                                                 </li>
                                                
@@ -540,7 +690,84 @@ const Landing_page1 = () => {
                                         <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={handlePayasyouGo}>Select Co-joint (Shared)</button>
                                 </div>
 
-                        </div>
+                        </div> */}
+
+
+                        <div className="LPMS-section3 box2">
+  {/* Normal Ride */}
+  <div className="LPMS-section3_box2_items LPMS-section3_box2_items_part1">
+    <span className="LPMS-section3_box2_items1">
+      <h3 className="LPMS-section3_box2_items1_title">Normal Ride</h3>
+      <h3 className="LPMS-section3_box2_items1_price">3.5 MAD/km</h3>
+      <p className="LPMS-section3_box2_items1_description1">Standard single-person ride for campus travel</p>
+    </span>
+    <span className="LPMS-section3_box2_items2">
+      <p className="LPMS-section3_box2_item2_vehicle_title">Vehicles:</p>
+      <p className="LPMS-section3_box2_item2_vehicle_descritpion">Sedan, Hatchback, Electric Car</p>
+    </span>
+    <span className="LPMS-section3_box2_items3">
+      <ul className="LPMS-section3_box2_items3_listDescription">
+        <li>✅ Comfortable seating</li>
+        <li>✅ Direct route</li>
+        <li>✅ Standard service</li>
+        <li>✅ Real-time tracking</li>
+      </ul>
+    </span>
+    <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={() => handlePayasyouGo('normal')}>
+      Select Normal Ride
+    </button>
+  </div>
+
+  {/* VIP Ride */}
+  <div className="LPMS-section3_box2_items LPMS-section3_box2_items_part1">
+    <span className="LPMS-section3_box2_items1">
+      <h3 className="LPMS-section3_box2_items1_title">VIP Ride</h3>
+      <h3 className="LPMS-section3_box2_items1_price">7 MAD/km</h3>
+      <p className="LPMS-section3_box2_items1_description1">Premium private ride with enhanced comfort</p>
+    </span>
+    <span className="LPMS-section3_box2_items2">
+      <p className="LPMS-section3_box2_item2_vehicle_title">Vehicles:</p>
+      <p className="LPMS-section3_box2_item2_vehicle_descritpion">Luxury Sedan, SUV</p>
+    </span>
+    <span className="LPMS-section3_box2_items3">
+      <ul className="LPMS-section3_box2_items3_listDescription">
+        <li>✅ Premium vehicles</li>
+        <li>✅ Priority service</li>
+        <li>✅ Extra comfort</li>
+        <li>✅ Professional drivers</li>
+        <li>✅ Climate control</li>
+      </ul>
+    </span>
+    <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={() => handlePayasyouGo('vip')}>
+      Select VIP Ride
+    </button>
+  </div>
+
+  {/* Co-joint (Shared) Ride */}
+  <div className="LPMS-section3_box2_items LPMS-section3_box2_items_part1">
+    <span className="LPMS-section3_box2_items1">
+      <h3 className="LPMS-section3_box2_items1_title">Co-joint (Shared)</h3>
+      <h3 className="LPMS-section3_box2_items1_price">2 MAD/km per person</h3>
+      <p className="LPMS-section3_box2_items1_description1">Affordable shared ride with up to 3 passengers</p>
+    </span>
+    <span className="LPMS-section3_box2_items2">
+      <p className="LPMS-section3_box2_item2_vehicle_title">Vehicles:</p>
+      <p className="LPMS-section3_box2_item2_vehicle_descritpion">Sedan, Electric Car</p>
+    </span>
+    <span className="LPMS-section3_box2_items3">
+      <ul className="LPMS-section3_box2_items3_listDescription">
+        <li>✅ Most affordable option</li>
+        <li>✅ Eco-friendly</li>
+        <li>✅ Meet fellow students</li>
+        <li>✅ Similar routes</li>
+      </ul>
+    </span>
+    <button className="LPMS-section3_box2_items_part1_selectionBtn" onClick={() => handlePayasyouGo('co-joint')}>
+      Select Co-joint (Shared)
+    </button>
+  </div>
+</div>
+
                         <div className="LPMS-section3 box3"></div>
 
                     </span>

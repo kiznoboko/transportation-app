@@ -330,6 +330,10 @@
     align-items: stretch;
   }
 
+  .transportation-input {
+    height: 30px;
+  }
+
   .transportation-search-btn {
     width: 100%;
   }

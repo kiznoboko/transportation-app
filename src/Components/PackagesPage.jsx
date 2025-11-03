@@ -813,13 +813,22 @@
 
 
 import React from "react";
+import {useState} from "react"
 import "../Styles/PackagesPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo.jsx";
+import dropdown_menu from "./images/menu_dropdown_1.png"
 
 const PackagesPage = () => {
   const navigate = useNavigate()
+   const [isNavActive, setIsNavActive] = useState(false);
+
+ const handleNavDropdown = () => {
+    // Toggle the nav bar visibility on small screens
+    setIsNavActive((prevState) => !prevState);
+  };
    const handleGetStartedClick = () => {
+
     navigate("/user_interface", { state: { registerActive: true } });
   };
 
@@ -830,11 +839,12 @@ const PackagesPage = () => {
     <div className="packages-page">
       {/* Header */}
       <header className="packages-header">
-        <nav className="nav">
+        {/* <nav className="nav">
           <div className="nav-logo">
             <Logo />
           </div>
-          <ul className="nav-links">
+          
+          <ul className="nav-links nav-links-dropdown">
             <Link to="/" className="nav-links-lists">Home</Link>
             <li>How It Works</li>
             <li className="active nav-links-lists">Packages</li>
@@ -842,9 +852,158 @@ const PackagesPage = () => {
           </ul>
           <div className="nav-actions">
             <button  className="btn btn-signin" onClick={handleSignIn}>Sign in</button>
-            <button className="btn btn-primary" onClick={handleGetStartedClick}>Get Started</button>
+            <button className="btn btn-primary getstarted-packages" onClick={handleGetStartedClick}>Get Started</button>
           </div>
-        </nav>
+        </nav> */}
+
+
+          {/* <nav className="nav">
+     
+      <div className="nav-logo">
+        <Logo />
+        <img
+          src={dropdown_menu}
+          alt="menu"
+          className="dropdown1"
+          onClick={handleNavDropdown}
+        />
+      </div>
+
+      
+      <ul className={`nav-links nav-links-dropdown ${isNavActive ? "active" : ""}`}>
+        <Link to="/" className="nav-links-lists">Home</Link>
+        <li>How It Works</li>
+        <li className="active nav-links-lists">Packages</li>
+        <Link to="/About" className="nav-links-lists">About</Link>
+      </ul>
+
+      
+      <div className="nav-actions">
+        <button className="btn-signin-packages packages-actions" onClick={handleSignIn}>Sign in</button>
+        <button
+          className="getstarted-packages packages-actions"
+          onClick={handleGetStartedClick}
+        >
+          Get Started
+        </button>
+      </div>
+    </nav> */}
+
+
+    {/* <nav className="nav">
+     
+      <div className="nav-logo">
+        <Logo />
+        <img
+          src={dropdown_menu}
+          alt="menu"
+          className="dropdown1"
+          onClick={handleNavDropdown}
+        />
+      </div>
+
+      
+      <div className={`nav-links-dropdown  ${isNavActive ? "active" : ""}`}>
+      <ul className="nav-links">
+        <Link to="/" className="nav-links-lists">Home</Link>
+        <li>How It Works</li>
+        <li className="active nav-links-lists">Packages</li>
+        <Link to="/About" className="nav-links-lists">About</Link>
+      </ul>
+
+      
+      <div className="nav-links">
+        <button
+          className="btn-signin-packages packages-actions"
+          onClick={handleSignIn}
+        >
+          Sign in
+        </button>
+        <button
+          className="getstarted-packages packages-actions"
+          onClick={handleGetStartedClick}
+        >
+          Get Started
+        </button>
+      </div>
+      </div>
+    </nav> */}
+
+    {/* <nav className="nav">
+      
+      <div className="nav-logo">
+        <Logo />
+        <img
+          src={dropdown_menu}
+          alt="menu"
+          className="dropdown1"
+          onClick={handleNavDropdown}
+        />
+      </div>
+
+      
+      <div className={`nav-links-dropdown ${isNavActive ? "active" : ""}`}>
+        <ul className="nav-links">
+          <Link to="/" className="nav-links-lists">Home</Link>
+          <li>How It Works</li>
+          <li className="active nav-links-lists">Packages</li>
+          <Link to="/About" className="nav-links-lists">About</Link>
+        </ul>
+
+        <div className="nav-links">
+          <button
+            className="btn-signin-packages packages-actions"
+            onClick={handleSignIn}
+          >
+            Sign in
+          </button>
+          <button
+            className="getstarted-packages packages-actions"
+            onClick={handleGetStartedClick}
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+    </nav> */}
+
+     <nav className="nav">
+      {/* === Logo + dropdown icon === */}
+      <div className="nav-logo">
+        <Logo />
+        <img
+          src={dropdown_menu}
+          alt="menu"
+          className="dropdown1"
+          onClick={handleNavDropdown}
+        />
+      </div>
+
+      {/* === Nav links & buttons wrapper === */}
+      <div className={`nav-links-dropdown ${isNavActive ? "active" : ""}`}>
+        <ul className="nav-links">
+          <Link to="/" className="nav-links-lists">Home</Link>
+          <li>How It Works</li>
+          <li className="active nav-links-lists">Packages</li>
+          <Link to="/About" className="nav-links-lists">About</Link>
+        </ul>
+
+        <div className="nav-links">
+          <button
+            className="btn-signin-packages packages-actions"
+            onClick={handleSignIn}
+          >
+            Sign in
+          </button>
+          <button
+            className="getstarted-packages packages-actions"
+            onClick={handleGetStartedClick}
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+    </nav>
       </header>
 
       {/* Main Content */}
@@ -858,6 +1017,7 @@ const PackagesPage = () => {
         <section className="daily-credits">
           <h3>Daily Prepaid Credits</h3>
           <p>Valid for 24 hours</p>
+          
           <table className="credits-table">
             <thead>
               <tr>
@@ -908,7 +1068,7 @@ const PackagesPage = () => {
                 <li>✅ Perfect for daily campus commute</li>
                 <li>✅ Flexible scheduling</li>
               </ul>
-              <Link to="/package/3" className="btn-secondary">View Details</Link>
+              <Link to="/package/3" className="btn-secondary package-action-btn">View Details</Link>
             </div>
             <div className="package-card popular">
               <div className="tag">Popular</div>
@@ -919,7 +1079,7 @@ const PackagesPage = () => {
                 <li>✅ Priority service</li>
                 <li>✅ Maximum comfort</li>
               </ul>
-              <Link to="/package/4" className="btn-primary">View Details</Link>
+              <Link to="/package/4" className="btn-primary package-action-btn">View Details</Link>
             </div>
             <div className="package-card">
               <h4>Co-joint Package</h4>
@@ -929,7 +1089,7 @@ const PackagesPage = () => {
                 <li>✅ Most affordable option</li>
                 <li>✅ Eco-friendly carpooling</li>
               </ul>
-              <Link to="/package/5" className="btn-secondary">View Details</Link>
+              <Link to="/package/5" className="btn-secondary package-action-btn">View Details</Link>
             </div>
           </div>
         </section>
@@ -943,19 +1103,19 @@ const PackagesPage = () => {
               <h4>Normal Package</h4>
               <p className="price">6000km - 18000 MAD/year</p>
               <p className="save-tag green">Save up to 20% annually</p>
-              <Link to="/package/6" className="btn-secondary">View Details</Link>
+              <Link to="/package/6" className="btn-secondary package-action-btn">View Details</Link>
             </div>
             <div className="package-card popular">
               <h4>VIP Package</h4>
               <p className="price">36000 MAD/year</p>
               <p className="save-tag blue">Save up to 25% annually</p>
-              <Link to="/package/7" className="btn-primary">View Details</Link>
+              <Link to="/package/7" className="btn-primary package-action-btn">View Details</Link>
             </div>
             <div className="package-card">
               <h4>Co-joint Package</h4>
               <p className="price">10800 MAD/year per person</p>
               <p className="save-tag orange">Save up to 30% annually</p>
-              <Link to="/package/8" className="btn-secondary">View Details</Link>
+              <Link to="/package/8" className="btn-secondary package-action-btn">View Details</Link>
             </div>
           </div>
         </section>
