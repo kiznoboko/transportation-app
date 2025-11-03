@@ -2122,7 +2122,7 @@ useEffect(() => {
         return (
           <div key={order.id} className="order-card">
             <div>
-              <h4>{order.start_location} → {order.end_location}</h4>
+              <h4>{order.start_location} → {order.destination}</h4>
               <p>
                 {order.ride_date} | {order.ride_time} | {order.passengers} passenger(s)
               </p>
