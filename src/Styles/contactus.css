@@ -1,4 +1,4 @@
-
+/* 
 
 .Contactusform-wrapper {
     width: 100%;
@@ -27,7 +27,7 @@ legend {
 }
 
 .Contactusform {
-    /* border: 1px dashed red; */
+   
     width: 100%;
     height: auto;
    
@@ -49,7 +49,7 @@ legend {
     align-items: self-start;
     flex-direction: column;
     padding: 5px 5px;
-    /* flex-wrap: wrap; */
+   
 
 
 }
@@ -87,4 +87,293 @@ legend {
     cursor: pointer;
 
 }
+ */
 
+
+ /* .Contactusform-wrapper {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.Contactusform-wrapper a {
+  display: inline-block;
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  transition: color 0.2s ease;
+}
+
+.Contactusform-wrapper a:hover {
+  color: #1d4ed8;
+}
+
+
+.Contactusfieldset {
+  border: 2px solid #2563eb;
+  border-radius: 10px;
+  padding: 2rem;
+}
+
+.Contactusfieldset legend {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-transform: capitalize;
+  padding: 0 0.5rem;
+}
+
+.Contactusform {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.Contactusform-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.Contactusform-label {
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+
+.Contactusform-control {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  color: #1e293b;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: none;
+}
+
+.Contactusform-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.textArea-input {
+  min-height: 100px;
+}
+
+
+.submit-formbtn {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submit-formbtn:hover {
+  background-color: #1d4ed8;
+}
+
+.submit-formbtn:active {
+  transform: scale(0.98);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .Contactusform-wrapper {
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .Contactusfieldset {
+    padding: 1.5rem;
+  }
+
+  .Contactusfieldset legend {
+    font-size: 1.1rem;
+  }
+} */
+
+
+/* ------------------ Wrapper ------------------ */
+.Contactusform-wrapper {
+  max-width: 750px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: #fefefe;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Home link */
+.Contactusform-wrapper a {
+  display: inline-block;
+  text-decoration: none;
+  color: #1e40af;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: color 0.2s ease;
+}
+
+.Contactusform-wrapper a:hover {
+  color: #1e3a8a;
+}
+
+/* ------------------ Fieldset & Legend ------------------ */
+.Contactusfieldset {
+  border: 2px solid #1e40af;
+  border-radius: 12px;
+  padding: 2.5rem;
+  background-color: #f0f4ff;
+}
+
+.Contactusfieldset legend {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  text-transform: capitalize;
+  padding: 0 0.5rem;
+}
+
+/* ------------------ Form Layout ------------------ */
+.Contactusform {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.Contactusform-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.Contactusform-label {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.6rem;
+  font-size: 1.1rem;
+}
+
+/* ------------------ Inputs & Textareas ------------------ */
+.Contactusform-control {
+  padding: 0.85rem 1rem;
+  border: 2px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  outline: none;
+  color: #1e293b;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  background-color: #ffffff;
+  resize: none;
+}
+
+.Contactusform-control::placeholder {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.Contactusform-control:focus {
+  border-color: #1e40af;
+  box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.15);
+}
+
+/* Larger textarea */
+.textArea-input {
+  min-height: 120px;
+  font-size: 1.05rem;
+}
+
+/* ------------------ Submit Button ------------------ */
+.submit-formbtn {
+  width: 100%;
+  background-color: #1e40af;
+  color: #ffffff;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.submit-formbtn:hover {
+  background-color: #1e3a8a;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.submit-formbtn:active {
+  transform: scale(0.98);
+}
+
+/* ------------------ Animation ------------------ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------ Responsive Design ------------------ */
+@media (max-width: 600px) {
+  .Contactusform-wrapper {
+    margin: 1.5rem;
+    padding: 2rem;
+  }
+
+  .Contactusfieldset {
+    padding: 2rem;
+  }
+
+  .Contactusfieldset legend {
+    font-size: 1.3rem;
+  }
+
+  .Contactusform-label {
+    font-size: 1rem;
+  }
+
+  .Contactusform-control {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .submit-formbtn {
+    font-size: 1.1rem;
+    padding: 0.9rem;
+  }
+}

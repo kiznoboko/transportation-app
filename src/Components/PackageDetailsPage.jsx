@@ -1337,6 +1337,9 @@ const handleSubmit = async (e) => {
     // Log the data or navigate
     console.log('Submission successful:', data);
     alert("your package credit is credited to your account")
+    setTimeout(() => {
+        navigate("/")
+    }, 500)
     // Optionally redirect the user to a confirmation page or show a success message
   } catch (err) {
     console.error('Error inserting submission:', err);

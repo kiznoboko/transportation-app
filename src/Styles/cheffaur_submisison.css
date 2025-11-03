@@ -1,0 +1,137 @@
+/* .register-cheffaur {
+    display: inline-block;
+    color: red;
+    cursor: pointer;
+    list-style: none;
+    text-decoration: none;
+}
+
+.register-cheffaur:hover {
+color: blue;
+text-decoration: underline;
+} */
+
+
+.h1-cheffaur-page {
+  text-align: center;
+  margin-top: 2rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* ------------------ Tag Warning Section ------------------ */
+.cheffaur-tag-warning {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 1rem 0 2rem 0;
+  list-style: none;
+}
+
+/* .register-cheffaur {
+  display: inline-block;
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s ease;
+} */
+
+
+.register-cheffaur {
+    display: inline-block;
+    color: red;
+    cursor: pointer;
+    list-style: none;
+    text-decoration: none;
+}
+
+.register-cheffaur:hover {
+  color: #1d4ed8;
+}
+
+/* ------------------ Form Container ------------------ */
+.form-cheffaur-submisison {
+  max-width: 420px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ------------------ Form Groups ------------------ */
+.form-group-cheffaur {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.form-label-cheffaur {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #334155;
+}
+
+/* ------------------ Inputs ------------------ */
+.form-control-cheffaur {
+  padding: 0.75rem 1rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control-cheffaur:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ------------------ Submit Button ------------------ */
+.cheffaur-submission-btn {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.cheffaur-submission-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.cheffaur-submission-btn:active {
+  transform: scale(0.98);
+}
+
+/* ------------------ Animation ------------------ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 480px) {
+  form {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

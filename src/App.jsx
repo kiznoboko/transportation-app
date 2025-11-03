@@ -12,11 +12,14 @@ import PackagesPage from "./Components/PackagesPage.jsx";
 import Search_results from "./Components/Search_results.jsx";
 import Dashboard from "./Components/user_dashboard1.jsx";
 import SearchLocation from "./Components/search_location.jsx";
-import Payment_page from "./Components/payment_page.jsx";
-import PayasyouGo from "./Components/PayAsyougo.jsx";
+
+// import PayasyouGo from "./Components/PayAsyougo.jsx";
 import ReservationPage from "./Components/ReservationPage.jsx";
 import Confirmation from "./Components/Confirmation.jsx";
-import PackageDetailsPage from "./Components/PackageDetailsPage.jsx"
+import PackageDetailsPage from "./Components/PackageDetailsPage.jsx";
+import Driver_submission from "./Components/driver_submission.jsx";
+import Driver_uuid from "./Components/Driver_uiid.jsx";
+import COnfirmed_submission from "./Components/Confirmed_contact_us.jsx";
 const App = () => {
   return (
     <>
@@ -35,9 +38,12 @@ const App = () => {
             <Route path="/ContactUS" element={< ContactUS/>}  />
               <Route path="/Transporter_dashboard" element={<Transporter_dashboard/>} />
               <Route path="/Payment_page" element={<ReservationPage/>} />
-              <Route path="/Payasyougo" element={<PayasyouGo/>} />
+              {/* <Route path="/Payasyougo" element={<PayasyouGo/>} /> */}
               <Route path="/confirmation" element={<Confirmation/>} />
                <Route path="/package/:id" element={<PackageDetailsPage />} />
+               <Route path="registerDriver" element={<Driver_submission />} />
+               <Route path="/driver/:uuid" element={<Driver_uuid/>} />
+               <Route path="/Confirmed/:uuid" element={<COnfirmed_submission/>} />
         </Routes>
     </>
   )

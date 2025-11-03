@@ -920,6 +920,7 @@ const User_interface = () => {
                 />
               </div>
               <button type="submit" className="submit-btn submit-login-password">Sign In</button>
+              <Link className="handle-cheffaur-tag" to="/registerDriver">devenez vous cheffaur ?</Link>
             </form>
            
              {message && <p className="message">{message}</p>}
@@ -966,6 +967,7 @@ const User_interface = () => {
                 />
               </div>
               <button type="submit" className="submit-btn submit-Register-password">Register</button>
+              <Link className="handle-cheffaur-tag" to="/registerDriver">devenez vous cheffaur ?</Link>
             </form>
             {message && <p className="message">{message}</p>}
           </div>

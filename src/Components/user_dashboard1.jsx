@@ -1699,6 +1699,7 @@ useEffect(() => {
       <h3>{UserData.username}</h3>
       <p>{UserData.email}</p>
       <p>Member since: {UserData.created_at}</p>
+      <Link className="handle-cheffaur-tag" to="/registerDriver">devenez vous cheffaur ?</Link>
     </>
   ) : (
     <p>Loading user data...</p>

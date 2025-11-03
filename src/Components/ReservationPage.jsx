@@ -662,79 +662,126 @@ export default function ReservationPage() {
   // };
 
 
-  const handleSubmit = async (e) => {
-  e.preventDefault();
+//   const handleSubmit = async (e) => {
+//   e.preventDefault();
 
-  try {
-    // const reservationData = {
-    //   client_full_name: formData.fullName || "Guest",
-    //   email_address: formData.email || "guest@example.com",
-    //   phone_number: formData.phone || "N/A",
-    //   number_of_passengers: formData.passengers,
-    //   start_location: selectedRide?.start_location || departure,
-    //   destination: selectedRide?.end_location || destination,
-    //   ride_date: date || selectedRide?.ride_date,
-    //   ride_time: time || selectedRide?.ride_time,
-    //   seats_available: selectedRide?.seats_available || 0,
-    //   ride_type: rideType || selectedRide?.ride_type || "Standard",
-    //   price: pricePerSeat,
-    //   payment_type: payment_method || "cash",
-    //   ride_status: "Pending",
-    // };
+//   try {
+//     // const reservationData = {
+//     //   client_full_name: formData.fullName || "Guest",
+//     //   email_address: formData.email || "guest@example.com",
+//     //   phone_number: formData.phone || "N/A",
+//     //   number_of_passengers: formData.passengers,
+//     //   start_location: selectedRide?.start_location || departure,
+//     //   destination: selectedRide?.end_location || destination,
+//     //   ride_date: date || selectedRide?.ride_date,
+//     //   ride_time: time || selectedRide?.ride_time,
+//     //   seats_available: selectedRide?.seats_available || 0,
+//     //   ride_type: rideType || selectedRide?.ride_type || "Standard",
+//     //   price: pricePerSeat,
+//     //   payment_type: payment_method || "cash",
+//     //   ride_status: "Pending",
+//     // };
 
-//     const reservationData = {
+// //     const reservationData = {
+// //   client_full_name: formData.fullName,
+// //   email_address: formData.email,
+// //   phone_number: formData.phone,
+// //   number_of_passengers: Number(formData.passengers), // integer
+// //   start_location: selectedRide?.start_location || departure,
+// //   destination: selectedRide?.end_location || destination,
+// //   ride_date: date || selectedRide?.ride_date, // YYYY-MM-DD
+// //   ride_time: time || selectedRide?.ride_time, // HH:MM:SS
+// //   seats_available: selectedRide?.seats_available ?? Number(formData.passengers),
+// //   ride_type: rideType || selectedRide?.ride_type || "Standard", // must match allowed values
+// //   price: Number(pricePerSeat), // numeric
+// //   payment_type: payment_method?.charAt(0).toUpperCase() + payment_method?.slice(1) || "Cash", // "Cash" | "Card" | "Online"
+// //   ride_status: "Pending", // default
+// // };
+
+
+// const reservationData = {
 //   client_full_name: formData.fullName,
 //   email_address: formData.email,
 //   phone_number: formData.phone,
-//   number_of_passengers: Number(formData.passengers), // integer
+//   number_of_passengers: Number(formData.passengers),
 //   start_location: selectedRide?.start_location || departure,
 //   destination: selectedRide?.end_location || destination,
-//   ride_date: date || selectedRide?.ride_date, // YYYY-MM-DD
-//   ride_time: time || selectedRide?.ride_time, // HH:MM:SS
+//   ride_date: date || selectedRide?.ride_date,
+//   ride_time: time || selectedRide?.ride_time,
 //   seats_available: selectedRide?.seats_available ?? Number(formData.passengers),
-//   ride_type: rideType || selectedRide?.ride_type || "Standard", // must match allowed values
-//   price: Number(pricePerSeat), // numeric
-//   payment_type: payment_method?.charAt(0).toUpperCase() + payment_method?.slice(1) || "Cash", // "Cash" | "Card" | "Online"
-//   ride_status: "Pending", // default
+//   ride_type:  "Standard", // <-- default to "Standard" if not selected
+//   price: Number(pricePerSeat),
+//   payment_type: payment_method?.charAt(0).toUpperCase() + payment_method?.slice(1) || "Cash",
+//   ride_status: "Pending",
 // };
 
 
-const reservationData = {
-  client_full_name: formData.fullName,
-  email_address: formData.email,
-  phone_number: formData.phone,
-  number_of_passengers: Number(formData.passengers),
-  start_location: selectedRide?.start_location || departure,
-  destination: selectedRide?.end_location || destination,
-  ride_date: date || selectedRide?.ride_date,
-  ride_time: time || selectedRide?.ride_time,
-  seats_available: selectedRide?.seats_available ?? Number(formData.passengers),
-  ride_type:  "Standard", // <-- default to "Standard" if not selected
-  price: Number(pricePerSeat),
-  payment_type: payment_method?.charAt(0).toUpperCase() + payment_method?.slice(1) || "Cash",
-  ride_status: "Pending",
-};
+//     console.log("📦 Reservation data:", reservationData);
+//     console.table(reservationData)
 
+//     const { data, error } = await supabase.from("ride_order").insert([reservationData]);
+//     console.log("Supabase insert response:", data, error);
 
-    console.log("📦 Reservation data:", reservationData);
-    console.table(reservationData)
+//     if (error) {
+//       console.error("❌ Supabase insert error:", error);
+//       alert("Failed to save your ride. Please try again.");
+//     } else {
+//       console.log("✅ Ride saved successfully:", data);
+//       alert("✅ Reservation confirmed and saved!");
+//       navigate("/Confirmed/:uuid");
+//     }
+//   } catch (err) {
+//     console.error("⚠️ Unexpected error:", err);
+//     alert("Something went wrong. Please try again later.");
+//   }
+// };
 
-    const { data, error } = await supabase.from("ride_order").insert([reservationData]);
-    console.log("Supabase insert response:", data, error);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const reservationData = {
+      client_full_name: formData.fullName,
+      email_address: formData.email,
+      phone_number: formData.phone,
+      number_of_passengers: Number(formData.passengers),
+      start_location: selectedRide?.start_location || departure,
+      destination: selectedRide?.end_location || destination,
+      ride_date: date || selectedRide?.ride_date,
+      ride_time: time || selectedRide?.ride_time,
+      seats_available: selectedRide?.seats_available ?? Number(formData.passengers),
+      ride_type: "Standard",
+      price: Number(pricePerSeat),
+      payment_type: payment_method?.charAt(0).toUpperCase() + payment_method?.slice(1) || "Cash",
+      ride_status: "Pending",
+    };
+
+    const { data, error } = await supabase.from("ride_order").insert([reservationData]).select();
 
     if (error) {
       console.error("❌ Supabase insert error:", error);
       alert("Failed to save your ride. Please try again.");
-    } else {
-      console.log("✅ Ride saved successfully:", data);
-      alert("✅ Reservation confirmed and saved!");
-      navigate("/confirmation");
+      return;
     }
+
+    // ✅ Extract the UUID (or primary key) from the first inserted row
+    const uuid = data?.[0]?.id; 
+    if (!uuid) {
+      alert("Reservation saved but no UUID returned.");
+      return;
+    }
+
+    console.log("✅ Ride saved successfully:", data);
+    alert("✅ Reservation confirmed and saved!");
+
+    // Navigate dynamically with the UUID
+    navigate(`/Confirmed/${uuid}`);
   } catch (err) {
     console.error("⚠️ Unexpected error:", err);
     alert("Something went wrong. Please try again later.");
   }
 };
+
 
   return (
     <div className="reservation-page">

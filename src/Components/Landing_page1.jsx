@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { createClient } from "@supabase/supabase-js";
 
 import Logo from "./Logo.jsx";
 import "../Styles/Landing_page_test.css";
@@ -15,6 +16,11 @@ import menu_dropdown_1 from "./images/menu_dropdown_1.png";
 import menu_dropdown_2 from "./images/menu_dropdown_2.png"
 
 const Landing_page1 = () => {
+
+  const supabaseUrl = 'https://xdbhtxoheaqgrbruapxv.supabase.co';
+          const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkYmh0eG9oZWFxZ3JicnVhcHh2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5NjQ1MjgsImV4cCI6MjA3NTU0MDUyOH0.kJIhesOoD7DYbR2ggSkxZO3w5VTECuLHGNztmwIs7PA';
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const [subscribe, setsubscribe] = useState("")
   const [isNavActive, setIsNavActive] = useState(false);
     const navigate = useNavigate()
       const [formData, setFormData] = useState({
@@ -67,6 +73,60 @@ const handleNavDropdown = () => {
     setIsNavActive((prevState) => !prevState);
   };
 
+  
+  
+  const [email, setEmail] = useState("");
+
+  // const handleSubscribeToNewsletter = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     const { data, error } = await supabase
+  //       .from("newsletter_subscriptions")
+  //       .insert([{ email }])
+  //       .select(); // get inserted row including UUID
+
+  //     if (error) {
+  //       console.error(error);
+  //       alert("❌ Failed to subscribe.");
+  //       return;
+  //     }
+
+  //     alert(`✅ Subscribed successfully! Your ID: ${data[0].id}`);
+  //     setEmail(""); // clear form
+  //   } catch (err) {
+  //     console.error(err);
+  //     alert("⚠️ Something went wrong.");
+  //   }
+  // };
+
+  const handleSubscribeToNewsletter = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Insert email into newsletter table
+      const { data, error } = await supabase
+        .from("newsletter_subscriptions")
+        .insert([{ email }])
+        .select(); // select returns inserted row including UUID
+
+      if (error) {
+        console.error(error);
+        alert("❌ Failed to subscribe.");
+        return;
+      }
+
+      // Get UUID of the inserted row
+      const uuid = data[0].id; // assuming 'id' is the UUID column
+      console.log("Subscribed with UUID:", uuid);
+
+      // Redirect to confirmation page
+      navigate(`/Confirmed/${uuid}`);
+    } catch (err) {
+      console.error(err);
+      alert("⚠️ Something went wrong.");
+    }
+  };
     
     return (
         <>  
@@ -963,6 +1023,7 @@ const handleNavDropdown = () => {
         <li><a href="#">Prepaid Packages</a></li>
         <li><a href="#">Institution Partnerships</a></li>
         <li><a href="#">Safety Features</a></li>
+        <Link className="handle-cheffaur-tag" to="/registerDriver">devenez vous cheffaur ?</Link>
       </ul>
     </div>
 
@@ -992,7 +1053,7 @@ const handleNavDropdown = () => {
     <div className="footer-column">
       <h3>Newsletter</h3>
       <p>Subscribe to get the latest updates and offers:</p>
-      <form className="newsletter-form">
+      {/* <form className="newsletter-form" onSubmit={handleSubscribetonewlester}>
         <div className="form-group">
           <input
             type="email"
@@ -1004,7 +1065,23 @@ const handleNavDropdown = () => {
         <button type="submit" className="btn-primary">
           Subscribe
         </button>
-      </form>
+      </form> */}
+
+       <form className="newsletter-form" onSubmit={handleSubscribeToNewsletter}>
+      <div className="form-group">
+        <input
+          type="email"
+          className="form-control"
+          placeholder="Your email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit" className="btn-primary">
+        Subscribe
+      </button>
+    </form>
     </div>
 
     </div>
