@@ -835,14 +835,67 @@ const User_interface = () => {
 // };
 
 
+// const handleLogin = async (e) => { 
+//   e.preventDefault();
+//   setMessage("");
+
+//   let user = null;
+//   let fromAdminTest = false;
+
+//   // Check admin_test table
+//   let { data, error } = await supabase
+//     .from("admin_test")
+//     .select("*")
+//     .eq("email", loginEmail)
+//     .eq("password", loginPassword) // ⚠️ Plain text passwords are insecure
+//     .single();
+
+//   if (data) {
+//     user = data;
+//     fromAdminTest = true;
+//   } else {
+//     // If not found, check register table
+//     ({ data, error } = await supabase
+//       .from("register")
+//       .select("*")
+//       .eq("email", loginEmail)
+//       .eq("password", loginPassword)
+//       .single());
+
+//     if (data) {
+//       user = data;
+//     }
+//   }
+
+//   if (!user) {
+//     setMessage("Invalid login or server error.");
+//     console.error(error);
+//     return;
+//   }
+
+//   // Login successful
+//   setMessage("Login successful!");
+//   console.log("Logged in user:", user);
+//   localStorage.setItem("userData", JSON.stringify(user));
+
+//   // Redirect based on table
+//   if (fromAdminTest) {
+//     navigate("/Admin_dashboard");
+//   } else {
+//     navigate("/dashboard");
+//   }
+// };
+
+
 const handleLogin = async (e) => { 
   e.preventDefault();
   setMessage("");
 
   let user = null;
   let fromAdminTest = false;
+  let fromDriverTable = false;
 
-  // Check admin_test table
+  // 1️⃣ Check admin_test table
   let { data, error } = await supabase
     .from("admin_test")
     .select("*")
@@ -854,7 +907,7 @@ const handleLogin = async (e) => {
     user = data;
     fromAdminTest = true;
   } else {
-    // If not found, check register table
+    // 2️⃣ Check register table
     ({ data, error } = await supabase
       .from("register")
       .select("*")
@@ -864,6 +917,19 @@ const handleLogin = async (e) => {
 
     if (data) {
       user = data;
+    } else {
+      // 3️⃣ Check drivers table
+      ({ data, error } = await supabase
+        .from("driver")
+        .select("*")
+        .eq("email", loginEmail)
+        .eq("password", loginPassword)
+        .single());
+
+      if (data) {
+        user = data;
+        fromDriverTable = true;
+      }
     }
   }
 
@@ -873,14 +939,16 @@ const handleLogin = async (e) => {
     return;
   }
 
-  // Login successful
+  // ✅ Login successful
   setMessage("Login successful!");
   console.log("Logged in user:", user);
   localStorage.setItem("userData", JSON.stringify(user));
 
-  // Redirect based on table
+  // 🔀 Redirect based on table
   if (fromAdminTest) {
     navigate("/Admin_dashboard");
+  } else if (fromDriverTable) {
+    navigate("/driver_page");
   } else {
     navigate("/dashboard");
   }

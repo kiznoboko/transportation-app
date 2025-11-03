@@ -20,6 +20,11 @@ import PackageDetailsPage from "./Components/PackageDetailsPage.jsx";
 import Driver_submission from "./Components/driver_submission.jsx";
 import Driver_uuid from "./Components/Driver_uiid.jsx";
 import COnfirmed_submission from "./Components/Confirmed_contact_us.jsx";
+
+import Driver from "./Components/Driver_page.jsx"
+
+
+import Reviews from "./Components/reviews.jsx";
 const App = () => {
   return (
     <>
@@ -44,6 +49,8 @@ const App = () => {
                <Route path="registerDriver" element={<Driver_submission />} />
                <Route path="/driver/:uuid" element={<Driver_uuid/>} />
                <Route path="/Confirmed/:uuid" element={<COnfirmed_submission/>} />
+               <Route path="/reviews/:uuid" element={<Reviews/>} />
+               <Route path="/driver_page" element={<Driver/>}/>
         </Routes>
     </>
   )

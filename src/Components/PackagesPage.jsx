@@ -1164,10 +1164,7 @@ const PackagesPage = () => {
             <h4>Stay Connected</h4>
             <p>📞 +212 620 000 000</p>
             <p>📍 Tamesna, Morocco</p>
-            <form className="newsletter-form">
-              <input type="email" placeholder="Your email" />
-              <button type="submit" className="btn-primary">Subscribe</button>
-            </form>
+           
           </div>
         </div>
 

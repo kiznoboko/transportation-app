@@ -2130,17 +2130,17 @@ useEffect(() => {
 
             {/* Conditional rendering of order status */}
             <div className={`order-status ${status}`}>
-              {status === "confirmed" ? (
-                <span style={{ color: "green", fontWeight: "bold" }}>Confirmed</span>
-              ) : (
-                <span style={{ color: "orange", fontWeight: "bold" }}>Pending</span>
-              )}
+              <p className="order-status">{order.ride_status}</p>
             </div>
 
             <div className="order-cost">
               <p>{order.price} MAD/KM</p>
               <span>{order.payment_type}</span>
             </div>
+            <div className="customer-review">
+              <Link to={`/reviews/${order.id}`}>Review</Link>
+            </div>
+
           </div>
         );
       })
