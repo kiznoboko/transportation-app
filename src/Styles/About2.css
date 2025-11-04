@@ -388,6 +388,14 @@
   font-family: "Inter", sans-serif;
 }
 
+.image-about {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+}
+
+
 /* ========== NAVBAR STYLES ========== */
 .navbar {
   width: 100%;
@@ -542,13 +550,62 @@
 
 .placeholder {
   border: 2px dashed #ccc;
-  height: 250px;
+  height: 40vh; /* Height based on the viewport height */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #777;
-  background: #fafafa;
+  text-align: center;
+}
+
+/* To make mission-image divs responsive */
+/*  */
+
+
+.placeholder1-quote,
+.placeholder2-quote {
+  font-family: 'Arial', sans-serif; /* Use a clean, readable font */
+  font-size: 1.2rem;               /* Adjust font size */
+  line-height: 1.6;                /* Line height for readability */
+  color: #333;                     /* Dark text color for good contrast */
+  text-align: center;              /* Center the text */
+  max-width: 800px;                /* Limit the width for better readability */
+  margin: 20px auto;               /* Add space around the quote */
+  padding: 20px;                   /* Padding inside the quote box */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+  border-radius: 10px;             /* Rounded corners for a soft look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Styling specific to the first quote */
+.placeholder1-quote {
+  font-style: italic; /* Italic for emphasis */
+  background-color: rgba(0, 0, 0, 0.1); /* Slightly darker background for contrast */
+  color: #222; /* Darker text color */
+}
+
+/* Styling specific to the second quote */
+.placeholder2-quote {
+  font-weight: bold; /* Bold text for emphasis */
+  color: #0056b3;    /* Blue color for visual interest */
+}
+
+/* Optional: Add a hover effect */
+.placeholder1-quote:hover,
+.placeholder2-quote:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Darker background on hover */
+  color: #fff; /* Change text color on hover */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+/* Make the text responsive on smaller screens */
+@media (max-width: 600px) {
+  .placeholder1-quote,
+  .placeholder2-quote {
+    font-size: 1rem; /* Smaller font size on mobile */
+    padding: 15px;   /* Less padding on mobile */
+  }
 }
 
 .mission-text {

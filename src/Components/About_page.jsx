@@ -3,7 +3,9 @@ import "../Styles/About2.css";
 import Logo from "./Logo.jsx";
 import {useState} from "react"
 import {Link, useNavigate} from "react-router-dom";
-import dropdown_menu from "./images/menu_dropdown_1.png"
+import dropdown_menu from "./images/menu_dropdown_1.png";
+import routes from "./images/routes.jpg";
+import routes1 from "./images/routes2.jpg";
 export default function About() {
   const [isNavActive, setIsNavActive] = useState(false);
   const handleNavDropdown = () => {
@@ -63,7 +65,7 @@ export default function About() {
       <Link to="/" className="nav-links">Home</Link>
       <Link to="#" className="nav-links">How It Works</Link>
       <Link to="/Available_packages" className="nav-links">Pricing</Link>
-      <a className="active nav-links">About</a>
+      <Link to="/About" className="active">About</Link>
     </div>
     <div className="nav-right-dropdown">
       <button className='signin signin-register-link nav-links' onClick={handleSignInclick}>Sign In</button>
@@ -108,8 +110,13 @@ export default function About() {
             from route planning to payment processing.
           </p>
         </div>
-        <div className="mission-image placeholder">
-          <p>Image Placeholder</p>
+        <div className="mission-image placeholder placeholder1">
+          {/* <img src={routes} alt=""   className="image-about"/> */}
+          <p className="placeholder1-quote">
+            "The goal is not to simply provide a ride, but to transform the journey into an experience."
+
+– This quote highlights the importance of making transportation not just about getting from point A to point B, but about enhancing the journey for the passenger, whether through comfort, convenience, or service.
+          </p>
         </div>
       </section>
 
@@ -186,8 +193,13 @@ export default function About() {
 
       {/* Serving Morocco Section */}
       <section className="serving">
-        <div className="serving-image placeholder">
-          <p>Image Placeholder</p>
+        <div className="serving-image placeholder placeholder2">
+          {/* <img src={routes1} alt="" className="image-about" /> */}
+          <p className="placeholder2-quote">
+            "Transportation is the silent backbone of our economy; without it, progress comes to a halt."
+
+– This quote emphasizes the crucial role that transportation plays in keeping societies and economies moving forward. It's a reminder that reliable transport is essential for the smooth functioning of everything from business to daily life.
+          </p>
         </div>
         <div className="serving-text">
           <h2>Serving Morocco’s Educational Community</h2>
