@@ -184,7 +184,7 @@ const handleNavDropdown = () => {
 
       <div className={`LP-navLinks general-right-navlinks ${isNavActive ? "active" : ""}`}>
         <ul className="LP-navList LP-navList-middle">
-          <li className="LP-navList_Lists">How it Works</li>
+          {/* <li className="LP-navList_Lists">How it Works</li> */}
           <Link to="/Available_packages" className="LP-navList_Lists">Pricing</Link>
           <Link to="/About" className="LP-navList_Lists">About</Link>
         </ul>

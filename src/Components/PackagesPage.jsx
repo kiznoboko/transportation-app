@@ -969,7 +969,7 @@ const PackagesPage = () => {
 
      <nav className="nav">
       {/* === Logo + dropdown icon === */}
-      <div className="nav-logo">
+      <div className="nav-logo LP-navList-left">
         <Logo />
         <img
           src={dropdown_menu}
@@ -1140,12 +1140,13 @@ const PackagesPage = () => {
         <div className="newsLetterSection">
           <div className="quick-links">
             <h4>Quick Links</h4>
-            <ul>
-              <li>Home</li>
-              <li>How It Works</li>
-              <li>Pricing</li>
-              <li>Packages</li>
-              <li>About Us</li>
+            <ul className="footer-links">
+              
+                        <Link to="/">Home</Link>
+                        <Link to="#">How It Works</Link>
+                        <Link to="/Available_packages">Pricing</Link>
+                        <Link className="handle-cheffaur-tag" to="/registerDriver">devenez vous cheffaur ?</Link>
+                        <Link to="/About">About</Link>
             </ul>
           </div>
 

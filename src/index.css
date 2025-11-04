@@ -34,3 +34,8 @@ html, body {
   cursor: pointer;
   list-style: none;
 }
+
+Link {
+  list-style: none;
+  text-decoration: none;
+}

@@ -529,6 +529,7 @@ import "../Styles/dashboard1.css";
 import Logo from "../../public/Logo.svg";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "../Styles/Driver_page.css"
 
 const Driver = () => {
     const supabaseUrl = "https://xdbhtxoheaqgrbruapxv.supabase.co"; // <-- your URL
@@ -538,6 +539,11 @@ const Driver = () => {
   const [loading, setLoading] = useState(false);
   const [trajectoryData, setTrajectoryData] = useState([]);
 const [loadingTrajectory, setLoadingTrajectory] = useState(false);
+ const [driverInfo, setDriverInfo] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const [formData, setFormData] = useState({
     start_location: "",
@@ -571,6 +577,21 @@ const [loadingTrajectory, setLoadingTrajectory] = useState(false);
   useEffect(() => {
     fetchTrajectories();
   }, []);
+
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("userData"));
+    if (storedUser) {
+      setDriverInfo(storedUser);
+    }
+  }, []);
+
+
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    window.location.href = "/"; // redirect to homepage or login page
+  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -712,8 +733,25 @@ const fetchTrajectory = async () => {
   return (
     <div className="driver-page-dashboard">
       <nav className="driver-nav">
+        <div className="driver_tag_navBar">
+           <img src={Logo} alt="Logo" className="driver-logo-page" />
         <h1>Driver Page</h1>
-        <img src={Logo} alt="Logo" className="driver-logo-page" />
+        </div>
+        
+       
+        {driverInfo.username ? (
+        <>
+          <p><strong>Username:</strong> {driverInfo.username}</p>
+          <p><strong>Email:</strong> {driverInfo.email}</p>
+          <p><strong>Password:</strong> {driverInfo.password}</p>
+        </>
+      ) : (
+        <p>No driver info found.</p>
+      )}
+
+      <button type="button" className="btn-logout" onClick={handleLogout}>
+        Logout
+      </button>
       </nav>
 
       <div className="driver-mainContainer">

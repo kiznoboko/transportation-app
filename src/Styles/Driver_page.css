@@ -1,0 +1,172 @@
+/* ===========================
+   DRIVER DASHBOARD STYLES
+=========================== */
+
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #f8f9fa;
+  --accent-color: #28a745;
+  --danger-color: #dc3545;
+  --text-color: #333;
+  --light-gray: #f1f1f1;
+  --border-radius: 8px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* NAVBAR */
+.driver-nav {
+  background-color: white;
+  color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.driver_tag_navBar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.driver-logo-page {
+  height: 45px;
+}
+
+.btn-logout {
+  border: #333;
+  color: red;
+  padding: 15px;
+  cursor: pointer;
+}
+
+/* MAIN CONTAINER */
+.driver-mainContainer {
+  width: 95%;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+}
+
+/* SECTIONS */
+.driver-section {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.driver-section h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--light-gray);
+  padding-bottom: 0.5rem;
+}
+
+/* FORM */
+.driver-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.driver-form input,
+.driver-form select {
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+}
+
+.driver-form input:focus,
+.driver-form select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.driver-form button {
+  grid-column: span 2;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.driver-form button:hover {
+  background-color: #0056b3;
+}
+
+.driver-form button[type="button"] {
+  background-color: var(--accent-color);
+}
+
+.driver-form button[type="button"]:hover {
+  background-color: #218838;
+}
+
+/* TABLE */
+.driver-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.driver-table th,
+.driver-table td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.driver-table th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.driver-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.driver-table tr:hover {
+  background-color: #f1f7ff;
+}
+
+.driver-table select {
+  padding: 0.3rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .driver-form {
+    grid-template-columns: 1fr;
+  }
+
+  .driver-form button {
+    grid-column: span 1;
+  }
+
+  .driver-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .driver-section {
+    padding: 1rem;
+  }
+
+  .driver-table {
+    font-size: 0.85rem;
+  }
+}

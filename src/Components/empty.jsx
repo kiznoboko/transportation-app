@@ -12,7 +12,7 @@ export default function About() {
     // Automatically close after 3 seconds (3000ms)
     setTimeout(() => {
       setIsNavActive(false);
-    }, 5000);
+    }, 3000);
   };
       const navigate = useNavigate()
   const handleGetStartedClick = () => {
@@ -25,26 +25,7 @@ export default function About() {
 
   return (
     <div className="rideconnect">
-      {/* Navbar */}
-      {/* <nav className="navbar">
-        <div className="nav-left">
-          <Logo/>
-          <img src={dropdown_menu} alt="" className="dropdown-image" onClick={handleNavDropdown} />
-        </div>
-        <div className={`nav-links-dropdown ${isNavActive ? "active" : ""}`}></div>
-        <div className="nav-center">
-          <Link to="/" className="nav-links">Home</Link>
-          <Link to="#" className="nav-links">How It Works</Link>
-          <Link to="/Available_packages" className="nav-links">Pricing</Link>
-         
-          <a  className="active">About</a>
-        </div>
-        <div className="nav-right">
-          <button  className='signin signin-register-link nav-links' onClick={handleSignInclick}>Sign In</button>
-          <button  className="getstarted signin-register-link nav-links" onClick={handleGetStartedClick}>Get Started</button>
-          
-        </div>
-      </nav> */}
+    
 
 <nav className="navbar nav">
   <div className="nav-left LP-navList-left">
@@ -245,18 +226,18 @@ export default function About() {
         <div className="support_connected_container">
             <div className="footer-links">
           <h4>Quick Links</h4>
-          <Link to="/">Home</Link>
-          <Link to="#">How It Works</Link>
-          <Link to="/Available_packages">Pricing</Link>
-          <Link className="handle-cheffaur-tag" to="/registerDriver">devenez vous cheffaur ?</Link>
-          <Link to="/About">About</Link>
+          <a href="#">Home</a>
+          <a href="#">How It Works</a>
+          <a href="#">Pricing</a>
+          <a href="#">Packages</a>
+          <a href="#">About</a>
         </div>
              <div className="footer-support">
           <h4>Support</h4>
           <a href="#">Help Center</a>
           <a href="#">Safety Guidelines</a>
           <a href="#">Terms of Service</a>
-          <a href="#"></a>
+          <a href="#">Privacy Policy</a>
         </div>
         <div className="footer-contact">
           <h4>Stay Connected</h4>

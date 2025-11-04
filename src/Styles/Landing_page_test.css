@@ -54,9 +54,10 @@ nav {
 }
 
 .general-right-navlinks {
-  width: 100%;
+  /* border: 1px solid black; */
+  width: 70%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
@@ -88,6 +89,7 @@ nav {
 
 .LP-navList_Lists:hover {
   color: var(--primary-color);
+  border-bottom: 3px solid  #8B4513;
 }
 
 .LP-navList-right-GetStarted {
@@ -1081,6 +1083,7 @@ nav {
 
    nav {
     /* border: 1px solid black; */
+    width: 100%;
     display: flex;
     justify-content:space-between;
     align-items:center;
@@ -1088,6 +1091,20 @@ nav {
     /* gap: 1rem; */
     
     padding: 1rem 2rem;
+  }
+
+  .general-right-navlinks {
+  width: 100%;
+ 
+} 
+
+  .LP-navList-left {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
   }
 
   .LP-navList-right {
