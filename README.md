@@ -1,16 +1,43 @@
-# React + Vite
+# 🚗 **FindTransportation**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🎯 Objectif du projet
 
-Currently, two official plugins are available:
+**FindTransportation** est une application de **covoiturage collaboratif** conçue pour **faciliter les déplacements** des **étudiants et enseignants d’un même établissement**.
+L’objectif est de **simplifier les trajets quotidiens**, **réduire les coûts de transport** et **favoriser une mobilité durable** au sein des campus et institutions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ⚙️ Fonctionnalités principales
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Mise en relation automatique entre **utilisateurs partageant le même trajet**
+* Système de **géolocalisation** et **filtrage par établissement** - present maintenant l'etablissement CMC
+* **Partage des frais de transport** entre conducteurs et passagers
+* **Calendrier intelligent** pour planifier les trajets réguliers
+* Interface simple et intuitive pour une utilisation fluide
 
-## Expanding the ESLint configuration
+## utilisations
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+    git clone https://github.com/kiznoboko/transportation-app.git
+    npm install 
+    npm run dev 
+
+```
+
+***il faut avoir node js deja installer pour tester dans un envirenement local***
+
+Avant de simuler un cas d’utilisation, merci de lire les instructions détaillées dans la documentation (document guide) du projet.
+
+---
+
+## 👥 Contributeurs
+
+* [@kiznoboko](https://github.com/kiznoboko)
+
+---
+
+## 📘 Licence
+
+Ce projet est open source et peut être utilisé librement dans un cadre éducatif ou personnel.
+
+---

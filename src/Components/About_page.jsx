@@ -142,7 +142,7 @@ export default function About() {
 
       {/* Why Choose RideConnect */}
       <section className="features">
-        <h2>Why Choose RideConnect?</h2>
+        <h2>Why Choose FindTransportation</h2>
         <p>
           We offer unique advantages designed specifically for Morocco’s
           educational transportation needs.
