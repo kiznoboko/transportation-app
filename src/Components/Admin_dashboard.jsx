@@ -318,7 +318,7 @@
 
 import { useEffect, useState } from "react";
 import "../Styles/admin_dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
 
 const Admin_dashboard = () => {
@@ -341,10 +341,11 @@ const supabase = createClient(supabaseUrl, supabaseKey);
       password: "",
     });
 
+    const navigate = useNavigate()
 
      const handleLogout = () => {
     localStorage.removeItem("userData");
-    window.location.href = "/"; // redirect to homepage or login page
+    navigate("/"); // redirect to homepage or login page
   };
 
      useEffect(() => {
