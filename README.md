@@ -24,6 +24,11 @@ L’objectif est de **simplifier les trajets quotidiens**, **réduire les coûts
 
 ```
 
+
+### Technologie utilise
+
+***HTML, JS, REACT_JS (VITE BUILD), CSS, NodeJs[vite build package manager for localtest], SUPABASE[backend], GIT, GITBASH, GIT PAGES*** 
+
 ***il faut avoir node js deja installer pour tester dans un envirenement local***
 
 Avant de simuler un cas d’utilisation, merci de lire les instructions détaillées dans la documentation (document guide) du projet.
